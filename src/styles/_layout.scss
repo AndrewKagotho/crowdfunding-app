@@ -1,0 +1,29 @@
+header {
+  height: 375px;
+  background-image: url('http://127.0.0.1:8887/images/image-hero-desktop.jpg');
+  background-repeat: no-repeat;
+  background-size: 100vw 100%;
+}
+
+.header__infoDiv {
+  width: 75%;
+  display: flex;
+  justify-content: space-between;
+  @include h-center-content;
+  top: 50px;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    font-size: $small-font;
+    font-weight: $bold-x1;
+    display: inline-block;
+    padding-left: 30px;
+    color: $neutral;
+  }
+
+}
