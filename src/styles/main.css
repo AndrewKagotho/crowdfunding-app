@@ -3,11 +3,79 @@ html {
   font-family: "Commissioner", sans-serif;
   font-size: 16px;
   font-weight: 400;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
   background-color: #F6F6F6;
+}
+
+h1 {
+  text-align: center;
+  margin: 5px 0 10px;
+}
+
+h2 {
+  font-size: 1rem;
+  margin: 0px 0 25px;
+}
+
+h3 {
+  font-size: 0.9rem;
+  display: inline;
+}
+
+p, span {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #777;
+  line-height: 1.7;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+.description {
+  width: 100%;
+  font-weight: 500;
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 30px auto;
+  grid-template-rows: repeat(2, auto);
+}
+svg {
+  scale: 1;
+}
+
+.cards {
+  width: 40%;
+}
+.cards > section {
+  border-radius: 5px;
+  background-color: #FFF;
+  padding: 35px;
+  transition: scale 0.1s linear;
+}
+
+button {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 20px;
+  background-color: hsl(176deg, 50%, 47%);
+  color: #FFF;
 }
 
 header {
@@ -17,7 +85,7 @@ header {
   background-size: 100vw 100%;
 }
 
-.header__infoDiv {
+.header__elements {
   width: 75%;
   display: flex;
   justify-content: space-between;
@@ -26,12 +94,12 @@ header {
   translate: -50% 0;
   top: 50px;
 }
-.header__infoDiv ul {
+.header__elements ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
-.header__infoDiv li {
+.header__elements li {
   font-size: 0.8rem;
   font-weight: 500;
   display: inline-block;
@@ -39,69 +107,159 @@ header {
   color: #FFF;
 }
 
-.cards {
-  width: 40%;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
+.body_content {
   position: relative;
   left: 50%;
   translate: -50% 0;
   translate: -50% -75px;
 }
-.cards section {
-  border-radius: 5px;
-  background-color: #FFF;
-  padding: 40px 20px 40px;
-  position: relative;
-}
-.cards h1 {
-  text-align: center;
-  margin: 5px 0 10px;
-}
 
-#logo_svg {
+.cards__firstSection svg {
   position: absolute;
   left: 50%;
   translate: -50% calc(-50% - 40px);
 }
 
-.cards__description {
-  width: 100%;
-  font-size: 0.8rem;
-  font-weight: 500;
-  display: inline-block;
-  text-align: center;
-  color: #777;
-  margin-bottom: 30px;
-}
-
-.cards__action {
+.cards__firstSection__actions {
   display: flex;
   justify-content: space-between;
-  padding: 0 15px;
 }
-.cards__action span {
-  font-size: 0.8rem;
-  font-weight: 500;
+.cards__firstSection__actions > span {
+  background-color: hsl(176deg, 50%, 47%);
+  color: #FFF;
+}
+.cards__firstSection__actions span {
   padding: 12px 30px;
   border-radius: 20px;
 }
-.cards__action div {
+.cards__firstSection__actions div {
   position: relative;
 }
-.cards__action div #bookmark_svg {
+.cards__firstSection__actions div svg {
   display: none;
   float: left;
 }
-.cards__action div span {
+.cards__firstSection__actions div span {
   float: right;
-  background-color: hsla(0deg, 0%, 48%, 0.1);
-  color: #777;
+  background-color: hsla(0deg, 0%, 48%, 0.2);
   margin-bottom: 0px;
 }
 
-#backproject_btn {
+.cards__secondSection {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: 2;
+}
+.cards__secondSection div:nth-child(2), .cards__secondSection div:nth-child(3) {
+  border-left: 2px solid hsla(0deg, 0%, 48%, 0.2);
+  padding-left: 40px;
+}
+.cards__secondSection div span {
+  display: block;
+}
+.cards__secondSection div span:nth-child(1) {
+  font-size: 1.7rem;
+  font-weight: 700;
+  padding-bottom: 5px;
+  color: #000;
+}
+.cards__secondSection div span:nth-child(2) {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #777;
+}
+.cards__secondSection progress {
+  width: 100%;
+  height: 8px;
+  grid-column: 1/4;
+  margin-top: 25px;
+}
+.cards__secondSection progress[value] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+.cards__secondSection progress[value]::-webkit-progress-bar {
+  border-radius: 5px;
+  background-color: hsla(0deg, 0%, 48%, 0.2);
+}
+.cards__secondSection progress[value]::-webkit-progress-value {
+  border-radius: 5px;
   background-color: hsl(176deg, 50%, 47%);
-  color: #FFF;
+}
+
+.cards__thirdSection section {
+  border: 1px solid hsla(0deg, 0%, 48%, 0.2);
+  border-radius: 5px;
+  padding: 25px;
+}
+.cards__thirdSection section span:nth-child(2) {
+  font-weight: 700;
+  color: hsl(176deg, 50%, 47%);
+  float: right;
+}
+.cards__thirdSection section b {
+  font-size: 1.3rem;
+  display: inline-block;
+  color: #000;
+  translate: 0 2px;
+}
+.cards__thirdSection section button {
+  float: right;
+}
+
+.modal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+}
+.modal h2 {
+  display: inline-block;
+  margin: 0px 0 15px;
+}
+.modal svg {
+  float: right;
+}
+.modal .description {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.modal__card {
+  width: 40%;
+  height: 75vh;
+  overflow-y: auto;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+.modal__card section {
+  border: 1px solid hsla(0deg, 0%, 48%, 0.2);
+  border-radius: 5px;
+  padding: 25px;
+  padding-bottom: 0px;
+}
+.modal__card section input {
+  margin-top: 5px;
+}
+.modal__card section label {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.modal__card section span:nth-child(2) {
+  font-weight: 700;
+  color: hsl(176deg, 50%, 47%);
+  padding-left: 15px;
+}
+.modal__card section span:nth-child(3) {
+  float: right;
+}
+.modal__card section b {
+  display: inline-block;
+  padding-right: 3px;
+  color: #000;
+  scale: 1.2;
 }/*# sourceMappingURL=main.css.map */

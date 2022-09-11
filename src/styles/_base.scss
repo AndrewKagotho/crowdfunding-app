@@ -4,11 +4,63 @@ html {
   font-family: 'Commissioner', sans-serif;
 	font-size: 16px;
 	font-weight: 400;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
   background-color: #F6F6F6;
+}
+
+h1 {
+  text-align: center;
+  margin: 5px 0 10px;
+}
+
+h2 {
+  font-size: 1rem;
+  margin: 0px 0 25px;
+}
+
+h3 {
+  font-size: .9rem;
+  display: inline;
+}
+
+p, span {
+  font-size: $small-font;
+  font-weight: $bold-x1;
+  color: $grey-font;
+  line-height: 1.7;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+.description {
+  width: 100%;
+  font-weight: $bold-x1;
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 30px auto;
+  grid-template-rows: repeat(2, auto);
+  // border: 2px solid red !important;
+
+  & > * {
+    // border: 1px solid orange;
+  }
 }
 
 @mixin h-center-content {
@@ -23,12 +75,34 @@ body {
   translate: 0 -50%;
 }
 
+@mixin center-content {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+@mixin green_bold_text {
+  font-weight: $bold-x2;
+  color: $theme;
+}
+
 @mixin card {
   border-radius: 5px;
   background-color: $neutral;
-  padding: 40px 20px 40px;
+  padding: 35px;
+}
+
+@mixin card_border {
+  border: 1px solid $light-grey;
+  border-radius: 5px;
+  padding: 25px;
+}
+
+@mixin card-enlarge {
+  scale: 1.02;
 }
 
 svg {
-  // scale: .8;
+  scale: 1;
 }

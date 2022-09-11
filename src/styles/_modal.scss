@@ -1,0 +1,58 @@
+.modal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(0, 0, 0, .5);
+  position: absolute;
+  top: 0;
+
+  h2 {
+    display: inline-block;
+    margin: 0px 0 15px;
+  }
+
+  svg {
+    float: right;
+  }
+
+  .description {
+    text-align: left;
+    margin-bottom: 15px;
+  }
+}
+
+.modal__card {
+  width: 40%;
+  height: 75vh;
+  overflow-y: auto;
+  @include center-content;
+
+  section {
+    @include card_border;
+    padding-bottom: 0px;
+
+    input {
+      margin-top: 5px;
+    }
+
+    label {
+      font-size: $small-font;
+      font-weight: $bold-x2;
+    }
+
+    span:nth-child(2) {
+      @include green_bold_text;
+      padding-left: 15px;
+    }
+
+    span:nth-child(3) {
+      float: right;
+    }
+
+    b {
+      display: inline-block;
+      padding-right: 3px;
+      color: $black;
+      scale: 1.2;
+    }
+  }
+}
