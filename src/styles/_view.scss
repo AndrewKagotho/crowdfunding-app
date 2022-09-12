@@ -95,15 +95,21 @@
 }
 
 .cards__thirdSection {
-  section {
-    @include card_border;
-    padding: 25px;
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 
-    span:nth-child(2) {
-      @include green_bold_text;
-      float: right;
+    li {
+      @include card_border;
+      padding: 25px;
+      
+      span:nth-child(2) {
+        @include green_bold_text;
+        float: right;
+      }
     }
-    
+
     b {
       font-size: 1.3rem;
       display: inline-block;

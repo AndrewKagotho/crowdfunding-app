@@ -190,23 +190,28 @@ header {
   background-color: hsl(176deg, 50%, 47%);
 }
 
-.cards__thirdSection section {
+.cards__thirdSection ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.cards__thirdSection ul li {
   border: 1px solid hsla(0deg, 0%, 48%, 0.2);
   border-radius: 5px;
   padding: 25px;
 }
-.cards__thirdSection section span:nth-child(2) {
+.cards__thirdSection ul li span:nth-child(2) {
   font-weight: 700;
   color: hsl(176deg, 50%, 47%);
   float: right;
 }
-.cards__thirdSection section b {
+.cards__thirdSection ul b {
   font-size: 1.3rem;
   display: inline-block;
   color: #000;
   translate: 0 2px;
 }
-.cards__thirdSection section button {
+.cards__thirdSection ul button {
   float: right;
 }
 
@@ -231,50 +236,50 @@ header {
 
 .modal__card {
   width: 40%;
-  height: 75vh;
+  max-height: 75vh;
   overflow-y: auto;
   position: relative;
   top: 50%;
   left: 50%;
   translate: -50% -50%;
 }
-.modal__card section {
+.modal__card ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.modal__card ul li {
   border: 1px solid hsla(0deg, 0%, 48%, 0.2);
   border-radius: 5px;
-  padding-bottom: 0px;
 }
-.modal__card section input {
-  margin-top: 5px;
-}
-.modal__card section label {
-  font-size: 0.8rem;
-  font-weight: 700;
-}
-.modal__card section span:nth-child(2) {
+.modal__card ul li span:nth-child(2) {
   font-weight: 700;
   color: hsl(176deg, 50%, 47%);
   padding-left: 15px;
 }
-.modal__card section span:nth-child(3) {
+.modal__card ul li span:nth-child(3) {
   float: right;
 }
-.modal__card section b {
+.modal__card ul input {
+  margin-top: 5px;
+}
+.modal__card ul label {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.modal__card ul b {
   display: inline-block;
   padding-right: 3px;
   color: #000;
   scale: 1.2;
 }
-.modal__card section hr {
-  border: none;
-  border-bottom: 1px solid hsla(0deg, 0%, 48%, 0.2);
-  margin: 0;
-}
 
 .modal__card__expand {
-  display: flex;
+  display: none;
   justify-content: space-between;
   align-items: center;
   padding: 20px 25px;
+  border-top: 1px solid hsla(0deg, 0%, 48%, 0.2);
 }
 .modal__card__expand div {
   height: 40px;
@@ -284,8 +289,20 @@ header {
 }
 .modal__card__expand div span {
   display: inline-block;
-  padding: 0 30px;
+  margin: 0 0 0 15px;
   position: relative;
   top: 50%;
   translate: 0 -50%;
+}
+.modal__card__expand div input {
+  width: 35px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #777;
+  line-height: 1.5;
+  margin: 0 15px 0 0;
+  position: relative;
+  top: 50%;
+  translate: 0 -50%;
+  border: none;
 }/*# sourceMappingURL=main.css.map */

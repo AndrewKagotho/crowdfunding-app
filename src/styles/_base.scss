@@ -56,8 +56,8 @@ p {
   display: grid;
   grid-template-columns: 30px auto;
   grid-template-rows: repeat(2, auto);
-  // border: 2px solid red;
   margin: 25px 25px 0;
+  // border: 2px solid blue;
 
   & > * {
     // border: 1px solid orange;
