@@ -56,7 +56,8 @@ p {
   display: grid;
   grid-template-columns: 30px auto;
   grid-template-rows: repeat(2, auto);
-  // border: 2px solid red !important;
+  // border: 2px solid red;
+  margin: 25px 25px 0;
 
   & > * {
     // border: 1px solid orange;
@@ -96,7 +97,6 @@ p {
 @mixin card_border {
   border: 1px solid $light-grey;
   border-radius: 5px;
-  padding: 25px;
 }
 
 @mixin card-enlarge {

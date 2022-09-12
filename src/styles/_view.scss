@@ -97,6 +97,7 @@
 .cards__thirdSection {
   section {
     @include card_border;
+    padding: 25px;
 
     span:nth-child(2) {
       @include green_bold_text;

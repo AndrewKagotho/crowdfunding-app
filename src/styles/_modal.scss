@@ -54,5 +54,31 @@
       color: $black;
       scale: 1.2;
     }
+
+    hr {
+      border: none;
+      border-bottom: 1px solid $light-grey;
+      margin: 0;
+    }
+  }
+}
+
+.modal__card__expand {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+
+  div {
+    height: 40px;
+    border: 1px solid $light-grey;
+    margin: 0 10px 0 auto;
+    border-radius: 20px;
+
+    span {
+      display: inline-block;
+      padding: 0 30px;
+      @include v-center-content;
+    }
   }
 }

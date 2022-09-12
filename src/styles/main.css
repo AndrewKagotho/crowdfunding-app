@@ -55,6 +55,7 @@ p {
   display: grid;
   grid-template-columns: 30px auto;
   grid-template-rows: repeat(2, auto);
+  margin: 25px 25px 0;
 }
 svg {
   scale: 1;
@@ -71,7 +72,8 @@ svg {
 }
 
 button {
-  padding: 12px 30px;
+  height: 40px;
+  padding: 0 25px;
   border: none;
   border-radius: 20px;
   background-color: hsl(176deg, 50%, 47%);
@@ -239,7 +241,6 @@ header {
 .modal__card section {
   border: 1px solid hsla(0deg, 0%, 48%, 0.2);
   border-radius: 5px;
-  padding: 25px;
   padding-bottom: 0px;
 }
 .modal__card section input {
@@ -262,4 +263,29 @@ header {
   padding-right: 3px;
   color: #000;
   scale: 1.2;
+}
+.modal__card section hr {
+  border: none;
+  border-bottom: 1px solid hsla(0deg, 0%, 48%, 0.2);
+  margin: 0;
+}
+
+.modal__card__expand {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+}
+.modal__card__expand div {
+  height: 40px;
+  border: 1px solid hsla(0deg, 0%, 48%, 0.2);
+  margin: 0 10px 0 auto;
+  border-radius: 20px;
+}
+.modal__card__expand div span {
+  display: inline-block;
+  padding: 0 30px;
+  position: relative;
+  top: 50%;
+  translate: 0 -50%;
 }/*# sourceMappingURL=main.css.map */
