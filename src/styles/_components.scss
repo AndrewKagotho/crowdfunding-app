@@ -17,3 +17,34 @@ button {
   background-color: $theme;
   color: $neutral;
 }
+
+.radio { appearance: none; }
+
+.test {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid $mid-grey;
+  position: relative;
+}
+
+.test:hover {
+  background-color: $theme-hover;
+}
+
+.test:after {
+  content: '';
+  width: 0;
+  height: 0;
+	border-radius: 50%;
+  background-color: $theme;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+input:checked ~ .test::after {
+  width: 50%;
+  height: 50%;
+}

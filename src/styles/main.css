@@ -57,6 +57,10 @@ p {
   grid-template-rows: repeat(2, auto);
   margin: 25px 25px 0;
 }
+.grid > * {
+  border: 1px solid orange;
+}
+
 svg {
   scale: 1;
 }
@@ -78,6 +82,41 @@ button {
   border-radius: 20px;
   background-color: hsl(176deg, 50%, 47%);
   color: #FFF;
+}
+
+.radio {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.test {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid hsla(0deg, 0%, 48%, 0.6);
+  position: relative;
+}
+
+.test:hover {
+  background-color: hsla(176deg, 50%, 47%, 0.1);
+}
+
+.test:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background-color: hsl(176deg, 50%, 47%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+input:checked ~ .test::after {
+  width: 50%;
+  height: 50%;
 }
 
 header {
@@ -252,26 +291,27 @@ header {
   border: 1px solid hsla(0deg, 0%, 48%, 0.2);
   border-radius: 5px;
 }
-.modal__card ul li span:nth-child(2) {
-  font-weight: 700;
-  color: hsl(176deg, 50%, 47%);
-  padding-left: 15px;
-}
-.modal__card ul li span:nth-child(3) {
-  float: right;
-}
 .modal__card ul input {
   margin-top: 5px;
-}
-.modal__card ul label {
-  font-size: 0.8rem;
-  font-weight: 700;
 }
 .modal__card ul b {
   display: inline-block;
   padding-right: 3px;
   color: #000;
   scale: 1.2;
+}
+
+.modal__card__header label {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.modal__card__header span:nth-child(3) {
+  font-weight: 700;
+  color: hsl(176deg, 50%, 47%);
+  padding-left: 15px;
+}
+.modal__card__header span:nth-child(4) {
+  float: right;
 }
 
 .modal__card__expand {

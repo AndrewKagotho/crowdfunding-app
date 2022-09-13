@@ -35,24 +35,10 @@
 
     li {
       @include card_border;
-      
-      span:nth-child(2) {
-        @include green_bold_text;
-        padding-left: 15px;
-      }
-
-      span:nth-child(3) {
-        float: right;
-      }
     }
 
     input {
       margin-top: 5px;
-    }
-
-    label {
-      font-size: $small-font;
-      font-weight: $bold-x2;
     }
 
     b {
@@ -61,6 +47,23 @@
       color: $black;
       scale: 1.2;
     }
+  }
+}
+
+.modal__card__header {
+  
+  label {
+    font-size: $small-font;
+    font-weight: $bold-x2;
+  }
+
+  span:nth-child(3) {
+    @include green_bold_text;
+    padding-left: 15px;
+  }
+
+  span:nth-child(4) {
+    float: right;
   }
 }
 
