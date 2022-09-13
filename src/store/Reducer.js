@@ -5,6 +5,7 @@ export const appReducer = (state = initialState, action) => {
     case 'ADD_PLEDGES':
       return {...state,
         pledge: {
+          id: [...state.pledge.id, action.id],
           name: [...state.pledge.name, action.name],
           description: [...state.pledge.description, action.description],
           total: [...state.pledge.total, action.total],

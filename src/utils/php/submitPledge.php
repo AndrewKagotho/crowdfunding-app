@@ -1,9 +1,10 @@
 <?php
   require 'dbconn.php';
 
-  $status = $_POST['pledge'];
+  $pledgeID = $_POST['pledgeID'];
   $amount = $_POST['amount'];
-  $name = $_POST['name'];
 
-  echo 'Status: '.$status .', Amount : ' .$amount .', Name: ' .$name;
+  $sql = "INSERT INTO `history`(`pledgeID`, `amount`, `date`) VALUES ('$pledgeID','$amount',NOW())";
+
+  $result = mysqli_query($conn, $sql);
 ?>

@@ -73,7 +73,7 @@ const Modal = ({props}) => {
         </div>
         <div className='modal__card__header'>
           <label htmlFor='bamboo' >{props.pledgeName[index]}</label>
-          <input type='hidden' name='namex' defaultValue={props.pledgeName[index]} ref={(item) => nameInputRef.current[index] = item}/>
+          <input type='hidden' name='pledgeID' defaultValue={props.pledgeID[index]} ref={(item) => nameInputRef.current[index] = item}/>
           <span>Pledge ${props.minAmount[index]} or more</span>
           <span><b>{props.total[index]}</b> left</span>
         </div>

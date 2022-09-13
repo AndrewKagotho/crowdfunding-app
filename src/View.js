@@ -24,6 +24,7 @@ const View = (props) => {
       let recordIndex = 0
       while(recordIndex < resArray.length) {
         props.addPledges(
+          resArray[recordIndex].pledgeID,
           resArray[recordIndex].name,
           resArray[recordIndex].description,
           resArray[recordIndex].total,
@@ -55,6 +56,7 @@ const View = (props) => {
 
 const mapStateToProps = (state) => {
   return {
+    pledgeID: state.pledge.id,
     pledgeName: state.pledge.name,
     description: state.pledge.description,
     total: state.pledge.total,
