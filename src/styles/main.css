@@ -270,6 +270,7 @@ header {
 }
 
 .modal__card {
+  display: none;
   width: 40%;
   max-height: 75vh;
   overflow-y: auto;
@@ -329,6 +330,7 @@ header {
   position: relative;
   top: 50%;
   translate: 0 -50%;
+  border: 1px solid red;
 }
 .modal__card__expand div input {
   width: 35px;
@@ -340,5 +342,25 @@ header {
   position: relative;
   top: 50%;
   translate: 0 -50%;
-  border: none;
+}
+
+.modal__completed {
+  width: 300px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+.modal__completed h2 {
+  display: block;
+  text-align: center;
+  border: 1px solid red;
+}
+.modal__completed p {
+  text-align: center;
+}
+.modal__completed button {
+  position: relative;
+  left: 50%;
+  translate: -50% 0;
 }/*# sourceMappingURL=main.css.map */

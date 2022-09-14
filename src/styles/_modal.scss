@@ -22,6 +22,7 @@
 }
 
 .modal__card {
+  display: none;
   width: 40%;
   max-height: 75vh;
   overflow-y: auto;
@@ -84,7 +85,7 @@
       display: inline-block;
       margin: 0 0 0 15px;
       @include v-center-content;
-      // border: 1px solid red;
+      border: 1px solid red;
     }
 
     input {
@@ -96,7 +97,31 @@
       // text-align: center;
       margin: 0 15px 0 0;
       @include v-center-content;
-      border: none;
+      // border: none;
     }
   }
+}
+
+.modal__completed {
+  width: 300px;
+  @include center-content;
+
+  svg {
+    // display: block;
+  }
+
+  h2 {
+    display: block;
+    text-align: center;
+    border: 1px solid red;
+  }
+
+  p {
+    text-align: center;
+  }
+
+  button {
+    @include h-center-content;
+  }
+
 }
