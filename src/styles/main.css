@@ -80,39 +80,8 @@ button {
   color: #FFF;
 }
 
-.radio {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-}
-
-.test {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  border: 1px solid hsla(0deg, 0%, 48%, 0.6);
-  position: relative;
-}
-
-.test:hover {
-  background-color: hsla(176deg, 50%, 47%, 0.1);
-}
-
-.test:after {
-  content: "";
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background-color: hsl(176deg, 50%, 47%);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-input:checked ~ .test::after {
-  width: 50%;
-  height: 50%;
+button:hover {
+  background-color: hsl(176deg, 50%, 40%);
 }
 
 header {
@@ -188,7 +157,7 @@ header {
   grid-template-rows: 2;
 }
 .cards__secondSection div:nth-child(2), .cards__secondSection div:nth-child(3) {
-  border-left: 2px solid hsla(0deg, 0%, 48%, 0.2);
+  border-left: 1px solid hsla(0deg, 0%, 48%, 0.2);
   padding-left: 40px;
 }
 .cards__secondSection div span {
@@ -197,7 +166,6 @@ header {
 .cards__secondSection div span:nth-child(1) {
   font-size: 1.7rem;
   font-weight: 700;
-  padding-bottom: 5px;
   color: #000;
 }
 .cards__secondSection div span:nth-child(2) {
@@ -261,16 +229,12 @@ header {
   display: inline-block;
   margin: 0px 0 15px;
 }
-.modal svg {
-  float: right;
-}
 .modal .description {
   text-align: left;
   margin-bottom: 15px;
 }
 
 .modal__card {
-  display: none;
   width: 40%;
   max-height: 75vh;
   overflow-y: auto;
@@ -278,6 +242,12 @@ header {
   top: 50%;
   left: 50%;
   translate: -50% -50%;
+}
+.modal__card svg {
+  float: right;
+}
+.modal__card svg path:hover {
+  opacity: 0.6;
 }
 .modal__card ul {
   list-style-type: none;
@@ -287,9 +257,6 @@ header {
 .modal__card ul li {
   border: 1px solid hsla(0deg, 0%, 48%, 0.2);
   border-radius: 5px;
-}
-.modal__card ul input {
-  margin-top: 5px;
 }
 .modal__card ul b {
   display: inline-block;
@@ -302,12 +269,12 @@ header {
   font-size: 0.8rem;
   font-weight: 700;
 }
-.modal__card__header span:nth-child(3) {
+.modal__card__header span:nth-child(2) {
   font-weight: 700;
   color: hsl(176deg, 50%, 47%);
   padding-left: 15px;
 }
-.modal__card__header span:nth-child(4) {
+.modal__card__header span:nth-child(3) {
   float: right;
 }
 
@@ -320,44 +287,86 @@ header {
 }
 .modal__card__expand div {
   height: 40px;
-  border: 1px solid hsla(0deg, 0%, 48%, 0.2);
+  display: table;
   margin: 0 10px 0 auto;
+  padding: 0 15px;
   border-radius: 20px;
+  border: 1px solid hsla(0deg, 0%, 48%, 0.2);
+}
+.modal__card__expand div:hover {
+  border: 1px solid hsl(176deg, 50%, 47%);
 }
 .modal__card__expand div span {
-  display: inline-block;
-  margin: 0 0 0 15px;
-  position: relative;
-  top: 50%;
-  translate: 0 -50%;
-  border: 1px solid red;
+  display: table-cell;
+  vertical-align: middle;
 }
 .modal__card__expand div input {
-  width: 35px;
-  font-size: 0.8rem;
-  font-weight: 500;
+  max-width: 35px;
+  height: 100%;
   color: #777;
   line-height: 1.5;
-  margin: 0 15px 0 0;
+  border: none;
+  background-color: transparent;
+}
+
+.radio input {
+  display: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+.radio span {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  border-radius: 50%;
+  border: 1px solid hsla(0deg, 0%, 48%, 0.6);
   position: relative;
   top: 50%;
   translate: 0 -50%;
+}
+.radio span:hover {
+  background-color: hsl(176deg, 50%, 40%);
+}
+.radio span:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background-color: hsl(176deg, 50%, 47%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.radio input:checked ~ span:after {
+  width: 50%;
+  height: 50%;
 }
 
 .modal__completed {
+  display: none;
   width: 300px;
   position: relative;
   top: 50%;
   left: 50%;
   translate: -50% -50%;
+  position: relative;
+}
+.modal__completed svg {
+  position: relative;
+  left: 50%;
+  translate: -50% 0;
+  margin-bottom: 30px;
 }
 .modal__completed h2 {
-  display: block;
+  width: 100%;
+  font-size: 1.2rem;
   text-align: center;
-  border: 1px solid red;
 }
 .modal__completed p {
   text-align: center;
+  margin: 0 0 30px;
 }
 .modal__completed button {
   position: relative;

@@ -20,12 +20,13 @@
 $theme: hsl(176, 50%, 47%);
 $neutral: #FFF;
 $black: #000;
-$theme-hover: hsla(176, 50%, 47%, .1);
+$theme-hover: hsl(176, 50%, 40%);
 $light-grey: hsla(0, 0%, 48%, .2);
 $mid-grey: hsla(0, 0%, 48%, .6);
 
 // Font
 $grey-font: #777;
 $small-font: .8rem;
+$large-font: 1.2rem;
 $bold-x1: 500;
 $bold-x2: 700;

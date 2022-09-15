@@ -11,10 +11,6 @@
     margin: 0px 0 15px;
   }
 
-  svg {
-    float: right;
-  }
-
   .description {
     text-align: left;
     margin-bottom: 15px;
@@ -22,24 +18,23 @@
 }
 
 .modal__card {
-  display: none;
   width: 40%;
   max-height: 75vh;
   overflow-y: auto;
   @include center-content;
 
+  svg {
+    float: right;
+    path:hover { opacity: .6; }
+  }
+
   ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    // border: 1px solid red;
 
     li {
       @include card_border;
-    }
-
-    input {
-      margin-top: 5px;
     }
 
     b {
@@ -58,14 +53,12 @@
     font-weight: $bold-x2;
   }
 
-  span:nth-child(3) {
+  span:nth-child(2) {
     @include green_bold_text;
     padding-left: 15px;
   }
 
-  span:nth-child(4) {
-    float: right;
-  }
+  span:nth-child(3) { float: right; }
 }
 
 .modal__card__expand {
@@ -77,47 +70,89 @@
 
   div {
     height: 40px;
-    border: 1px solid $light-grey;
+    display: table;
     margin: 0 10px 0 auto;
+    padding: 0 15px;
     border-radius: 20px;
+    border: 1px solid $light-grey;
+
+    &:hover { border: 1px solid $theme; }
 
     span {
-      display: inline-block;
-      margin: 0 0 0 15px;
-      @include v-center-content;
-      border: 1px solid red;
+      display: table-cell;
+      vertical-align: middle;
+      // border: 1px solid red;
     }
 
     input {
-      width: 35px;
-      font-size: $small-font;
-      font-weight: $bold-x1;
+      max-width: 35px;
+      height: 100%;
       color: $grey-font;
       line-height: 1.5;
-      // text-align: center;
-      margin: 0 15px 0 0;
-      @include v-center-content;
-      // border: none;
+      border: none;
+      background-color: transparent;
     }
   }
 }
 
+.radio {
+
+  input {
+    display: none;
+    appearance: none;
+  }
+
+  span {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    border-radius: 50%;
+    border: 1px solid $mid-grey;
+    @include v-center-content;
+  }
+  
+  span:hover {
+    background-color: $theme-hover;
+  }
+  
+  span:after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: $theme;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  input:checked ~ span:after {
+    width: 50%;
+    height: 50%;
+  }
+}
+
 .modal__completed {
+  display: none;
   width: 300px;
   @include center-content;
+  position: relative;
 
   svg {
-    // display: block;
+    @include h-center-content;
+    margin-bottom: 30px;
   }
 
   h2 {
-    display: block;
+    width: 100%;
+    font-size: $large-font;
     text-align: center;
-    border: 1px solid red;
   }
 
   p {
     text-align: center;
+    margin: 0 0 30px;
   }
 
   button {

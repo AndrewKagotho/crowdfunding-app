@@ -2,6 +2,15 @@ import { initialState } from "./State"
 
 export const appReducer = (state = initialState, action) => {
   switch(action.type) {
+    case 'ADD_PROJECT_DETAILS':
+      return {...state,
+        project: {
+          target: action.target,
+          days: action.days,
+          amounted: action.amounted,
+          backers: action.backers
+        }
+      }
     case 'ADD_PLEDGES':
       return {...state,
         pledge: {

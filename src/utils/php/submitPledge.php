@@ -10,10 +10,4 @@
   $result = mysqli_query($conn, $sql);
 
   echo $result;
-
-  // if($result) {
-  //   echo "<script language = 'javascript'>
-  //     location.href = 'javascript:history.go(-1)'
-  //   </script>";
-  // }
 ?>

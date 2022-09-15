@@ -1,5 +1,4 @@
 import React from 'react'
-import axios from 'axios'
 import { connect } from 'react-redux'
 import { mapDispatchToProps } from './store/Actions'
 import Header from './layouts/Header'
@@ -7,33 +6,16 @@ import Intro from './features/Intro'
 import Stats from './features/Stats'
 import Pledges from './features/Pledges'
 import Modal from './features/Modal'
-
-let getPledges = 'http://localhost/crowdfunding-app/src/utils/php/getPledges.php'
+import { fetchProjectDetails } from './utils/functions/getProjectDetails'
+import { fetchPledges } from './utils/functions/getPledges'
 
 const View = (props) => {
 
   React.useEffect(() => {
-    fetchPledges()
+    fetchProjectDetails(props)
+    fetchPledges(props)
     // eslint-disable-next-line
   }, [])
-
-  const fetchPledges = () => {
-    axios.get(getPledges)
-    .then((response) => {
-      let resArray = response.data
-      let recordIndex = 0
-      while(recordIndex < resArray.length) {
-        props.addPledges(
-          resArray[recordIndex].pledgeID,
-          resArray[recordIndex].name,
-          resArray[recordIndex].description,
-          resArray[recordIndex].total,
-          resArray[recordIndex]['minimum amount']
-        )
-        recordIndex++ 
-      }
-    })
-  }
 
   return (
     <>
@@ -43,7 +25,7 @@ const View = (props) => {
           <Intro />
         </section>
         <section className='cards__secondSection'>
-          <Stats />
+          <Stats props={props} />
         </section>
         <section className='cards__thirdSection'>
           <Pledges props={props} />
@@ -56,6 +38,10 @@ const View = (props) => {
 
 const mapStateToProps = (state) => {
   return {
+    target: state.project.target,
+    days: state.project.days,
+    amounted: state.project.amounted,
+    backers: state.project.backers,
     pledgeID: state.pledge.id,
     pledgeName: state.pledge.name,
     description: state.pledge.description,

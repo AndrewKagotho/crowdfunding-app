@@ -1,19 +1,19 @@
-const Stats = () => {
+const Stats = ({props}) => {
   return (
     <>
       <div>
-        <span>$89,914</span>
-        <span>of $100,000 backed</span>
+        <span>${props.amounted}</span>
+        <span>of ${props.target} backed</span>
       </div>
       <div>
-        <span>5,007</span>
+        <span>{props.backers}</span>
         <span>total backers</span>
       </div>
       <div>
-        <span>56</span>
+        <span>{props.days}</span>
         <span>days left</span>
       </div>
-      <progress max='100' min='0' value='75'/>
+      <progress max={props.target} min='0' value={props.amounted}/>
     </>
   )
 }

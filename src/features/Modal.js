@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { fetchProjectDetails } from '../utils/functions/getProjectDetails'
 
 let submitPledge = 'http://localhost/crowdfunding-app/src/utils/php/submitPledge.php'
 let prevCards = [0,1]
@@ -7,33 +8,24 @@ let firstSelection = true
 let isHidden = false
 
 const Modal = ({props}) => {
-  
+
   const [formData, setFormData] = React.useState({
     pledgeID: '',
     amount: ''
   })
   
-  const handleChange = (e) => {
-    setFormData({...formData, amount: e.target.value})
-  }
+  const handleChange = (e) => setFormData({...formData, amount: e.target.value})
 
   const expandCardRef = React.useRef([])
   const pledgeCardRef = React.useRef([])
   const radioRef = React.useRef([])
   const nameInputRef = React.useRef([])
   const amountInputRef = React.useRef([])
+  const modalRef = React.useRef([])
+  const selectPledgeRef = React.useRef([])
+  const successPledgeRef = React.useRef([])
 
-  const disableInputs = (arg) => {
-    for(let i=0; i<nameInputRef.current.length; i++ ) {
-      if(i===arg) {
-        continue
-      }
-      else {
-        nameInputRef.current[i].disabled = 'true'
-        amountInputRef.current[i].disabled = 'true'
-      }
-    }
-  }
+  const hideModal = () => modalRef.current.style.display = 'none'
 
   const expandCard = (arg) => {
     disableInputs(arg)
@@ -57,6 +49,18 @@ const Modal = ({props}) => {
     reverseExpandCard()
   }
 
+  const disableInputs = (arg) => {
+    for(let i=0; i<nameInputRef.current.length; i++ ) {
+      if(i===arg) {
+        continue
+      }
+      else {
+        nameInputRef.current[i].disabled = 'true'
+        amountInputRef.current[i].disabled = 'true'
+      }
+    }
+  }
+
   const reverseExpandCard = () => {
     if(!firstSelection && prevCards[0] === prevCards[1]) {
       if(!isHidden) {
@@ -74,16 +78,19 @@ const Modal = ({props}) => {
     firstSelection = false
   }
 
+  const showSuccessModal = () => {
+    selectPledgeRef.current.style.display = 'none'
+    successPledgeRef.current.style.display = 'block'
+  }
+
   const pledges = props.pledgeName.map((item, index) =>
     <li key={index} ref={(item) => pledgeCardRef.current[index] = item} onClick={() =>
-      setFormData({...formData,
-        pledgeID: props.pledgeID[index]
-      })
+      setFormData({...formData, pledgeID: props.pledgeID[index]})
     }>
       <div className='grid' onClick={() => expandCard(index)}>
-        <div>
-          <input className='radio' type='radio' id='bamboo' name='pledge' ref={(item) => radioRef.current[index] = item}/>
-          <span className='test'></span>
+        <div className='radio'>
+          <input type='radio' id='bamboo' name='pledge' ref={(item) => radioRef.current[index] = item}/>
+          <span></span>
         </div>
         <div className='modal__card__header'>
           <label htmlFor='bamboo' >{props.pledgeName[index]}</label>
@@ -97,7 +104,7 @@ const Modal = ({props}) => {
         <span>Enter your pledge</span>
         <div>
           <span>$</span>
-          <input type='text' name='amount' placeholder={props.minAmount[index]} value={formData.amount} onChange={handleChange} ref={(item) => amountInputRef.current[index] = item}/>
+          <input type='text' name='amount' defaultValue={props.minAmount[index]} onChange={handleChange}/>
         </div>
         <button type='submit'>Continue</button>
       </div>
@@ -106,17 +113,19 @@ const Modal = ({props}) => {
 
   const handleSubmit = (e) => {
     axios.post(submitPledge, formData)
-    .then((response) =>
-      console.log(response)
+    .then((response) => {
+        if(response)
+          showSuccessModal()
+      }
     )
     e.preventDefault()
   }
 
   return (
-    <div className='modal cards'>
-      <section className='modal__card'>
+    <div className='modal cards' ref={modalRef}>
+      <section className='modal__card' ref={selectPledgeRef}>
         <h2>Back this project</h2>
-        <svg width="15" height="15" xmlns="http://www.w3.org/2000/svg"><path d="M11.314 0l2.828 2.828L9.9 7.071l4.243 4.243-2.828 2.828L7.07 9.9l-4.243 4.243L0 11.314 4.242 7.07 0 2.828 2.828 0l4.243 4.242L11.314 0z" fill="#000" fillRule="evenodd" opacity=".4"/></svg>
+        <svg onClick={hideModal} width="15" height="15"><path d="M11.314 0l2.828 2.828L9.9 7.071l4.243 4.243-2.828 2.828L7.07 9.9l-4.243 4.243L0 11.314 4.242 7.07 0 2.828 2.828 0l4.243 4.242L11.314 0z" fill="#000" fillRule="evenodd" opacity=".4"/></svg>
         <span className='description'>Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?</span>
         <form onSubmit={handleSubmit}>
           <ul className='flex'>
@@ -124,11 +133,11 @@ const Modal = ({props}) => {
           </ul>
         </form>
       </section>
-      <section className='modal__completed'>
-        <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg"><g fill="none" fillRule="evenodd"><circle fill="#3CB3AB" cx="32" cy="32" r="32"/><path stroke="#FFF" stroke-width="5" d="M20 31.86L28.093 40 44 24"/></g></svg>
-        <h2>Thanks for your support</h2>
+      <section className='modal__completed' ref={successPledgeRef}>
+        <svg width="64" height="64"><g fill="none" fillRule="evenodd"><circle fill="#3CB3AB" cx="32" cy="32" r="32"/><path stroke="#FFF" strokeWidth="5" d="M20 31.86L28.093 40 44 24"/></g></svg>
+        <h2>Thanks for your support!</h2>
         <p>Your pledge brings us one step closer to sharing Mastercraft Bamboo Monitor Riser worldwide. You will get an email once our campaign is completed.</p>
-        <button>Got it</button>
+        <button onClick={() => {hideModal(); fetchProjectDetails(props)}}>Got it</button>
       </section>
     </div>
   )
