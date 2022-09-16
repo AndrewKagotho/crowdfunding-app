@@ -7,7 +7,7 @@ let prevCards = [0,1]
 let firstSelection = true
 let isHidden = false
 
-const Modal = ({props}) => {
+const Modal = ({props, modalRef, radioRef, selectPledgeRef, successPledgeRef}) => {
 
   const [formData, setFormData] = React.useState({
     pledgeID: '',
@@ -18,12 +18,8 @@ const Modal = ({props}) => {
 
   const expandCardRef = React.useRef([])
   const pledgeCardRef = React.useRef([])
-  const radioRef = React.useRef([])
   const nameInputRef = React.useRef([])
   const amountInputRef = React.useRef([])
-  const modalRef = React.useRef([])
-  const selectPledgeRef = React.useRef([])
-  const successPledgeRef = React.useRef([])
 
   const hideModal = () => modalRef.current.style.display = 'none'
 
@@ -104,7 +100,7 @@ const Modal = ({props}) => {
         <span>Enter your pledge</span>
         <div>
           <span>$</span>
-          <input type='text' name='amount' defaultValue={props.minAmount[index]} onChange={handleChange}/>
+          <input type='text' name='amount' defaultValue={props.minAmount[index]} min="3" onChange={handleChange}/>
         </div>
         <button type='submit'>Continue</button>
       </div>

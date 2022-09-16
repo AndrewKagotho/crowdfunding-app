@@ -1,4 +1,24 @@
-const Pledges = ({props}) => {
+import React from 'react'
+
+const Pledges = ({props, modalRef, radioRef, selectPledgeRef, successPledgeRef}) => {
+
+  React.useEffect(() => {document.body.style.overflow = 'hidden'})
+
+  // const showCheckedModal = (arg) => {
+  //   modalRef.current.style.display = 'block'
+  //   document.body.style.overflow = 'hidden'
+  //   radioRef.current[arg].checked = 'true'
+
+  //   if (typeof window != 'undefined' && window.document) {
+  //     document.body.style.overflow = 'hidden';
+  //   }
+  // }
+
+  const showModal = () => {
+    modalRef.current.style.display = 'block'
+    selectPledgeRef.current.style.display = 'block'
+    successPledgeRef.current.style.display = 'none'
+  }
   
   const pledges = props.pledgeName.map((item, index) => 
     <li key={index}>
@@ -6,7 +26,7 @@ const Pledges = ({props}) => {
       <span>Pledge ${props.minAmount[index]} or more</span>
       <p>{props.description[index]}</p>
       <span><b>{props.total[index]}</b> left</span>
-      <button>Select reward</button>
+      <button onClick={showModal}>Select reward</button>
     </li>
   )
 

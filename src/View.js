@@ -10,6 +10,11 @@ import { fetchProjectDetails } from './utils/functions/getProjectDetails'
 import { fetchPledges } from './utils/functions/getPledges'
 
 const View = (props) => {
+  
+  const modalRef = React.useRef()
+  const selectPledgeRef = React.useRef()
+  const successPledgeRef = React.useRef()
+  const radioRef = React.useRef([])
 
   React.useEffect(() => {
     fetchProjectDetails(props)
@@ -22,16 +27,16 @@ const View = (props) => {
       <Header />
       <div className='body_content cards flex'>
         <section className='cards__firstSection'>
-          <Intro />
+          <Intro modalRef={modalRef} selectPledgeRef={selectPledgeRef} successPledgeRef={successPledgeRef} />
         </section>
         <section className='cards__secondSection'>
           <Stats props={props} />
         </section>
         <section className='cards__thirdSection'>
-          <Pledges props={props} />
+          <Pledges props={props} modalRef={modalRef} selectPledgeRef={selectPledgeRef} successPledgeRef={successPledgeRef} />
         </section>
       </div>
-      <Modal props={props} />
+      <Modal props={props} modalRef={modalRef} radioRef={radioRef} selectPledgeRef={selectPledgeRef} successPledgeRef={successPledgeRef} />
     </>
   )
 }

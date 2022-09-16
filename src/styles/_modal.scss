@@ -1,9 +1,10 @@
 .modal {
-  // display: none;
+  display: none;
   width: 100vw;
   height: 100vh;
   background-color: rgb(0, 0, 0, .5);
-  position: absolute;
+  overflow-y: auto;
+  position: fixed;
   top: 0;
 
   h2 {
@@ -19,9 +20,8 @@
 
 .modal__card {
   width: 40%;
-  max-height: 75vh;
-  overflow-y: auto;
-  @include center-content;
+  margin: 100px 0;
+  @include h-center-content;
 
   svg {
     float: right;
@@ -92,6 +92,8 @@
       border: none;
       background-color: transparent;
     }
+
+    input:focus { outline: none; }
   }
 }
 

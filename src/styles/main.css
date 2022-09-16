@@ -55,7 +55,7 @@ p {
   display: grid;
   grid-template-columns: 30px auto;
   grid-template-rows: repeat(2, auto);
-  margin: 25px 25px 0;
+  padding: 25px 25px 0;
 }
 svg {
   scale: 1;
@@ -120,7 +120,7 @@ header {
   translate: -50% -75px;
 }
 
-.cards__firstSection svg {
+.cards__firstSection > svg {
   position: absolute;
   left: 50%;
   translate: -50% calc(-50% - 40px);
@@ -138,17 +138,19 @@ header {
   padding: 12px 30px;
   border-radius: 20px;
 }
-.cards__firstSection__actions div {
-  position: relative;
+.cards__firstSection__actions > div svg {
+  position: absolute;
+  translate: -35% 0;
 }
-.cards__firstSection__actions div svg {
-  display: none;
-  float: left;
+.cards__firstSection__actions > div svg g {
+  scale: 0.7;
 }
-.cards__firstSection__actions div span {
-  float: right;
+.cards__firstSection__actions > div button {
+  color: #777;
   background-color: hsla(0deg, 0%, 48%, 0.2);
   margin-bottom: 0px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .cards__secondSection {
@@ -219,10 +221,12 @@ header {
 }
 
 .modal {
+  display: none;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
-  position: absolute;
+  overflow-y: auto;
+  position: fixed;
   top: 0;
 }
 .modal h2 {
@@ -236,12 +240,10 @@ header {
 
 .modal__card {
   width: 40%;
-  max-height: 75vh;
-  overflow-y: auto;
+  margin: 100px 0;
   position: relative;
-  top: 50%;
   left: 50%;
-  translate: -50% -50%;
+  translate: -50% 0;
 }
 .modal__card svg {
   float: right;
@@ -307,6 +309,9 @@ header {
   line-height: 1.5;
   border: none;
   background-color: transparent;
+}
+.modal__card__expand div input:focus {
+  outline: none;
 }
 
 .radio input {

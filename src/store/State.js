@@ -11,10 +11,5 @@ export const initialState = {
     description: [],
     total: [],
     minAmount: []
-  },
-  history: {
-    pledge: [],
-    amount: [],
-    date: []
   }
 }

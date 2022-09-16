@@ -4,7 +4,7 @@
 }
 
 .cards__firstSection {
-  svg {
+  & > svg {
     position: absolute;
     left: 50%;
     translate: -50% calc(-50% - 40px);
@@ -25,18 +25,23 @@
     border-radius: 20px;
   }
 
-  div {
-    position: relative;
+  & > div {
 
     svg {
-      display: none;
-      float: left;
+      position: absolute;
+      translate: -35% 0;
+
+      g {
+        scale: .7;
+      }
     }
 
-    span {
-      float: right;
+    button {
+      color: $grey-font;
       background-color: $light-grey;
       margin-bottom: 0px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
     }
   }
 }

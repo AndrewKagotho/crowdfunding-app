@@ -19,7 +19,14 @@ const addPledges = (x1,x2,x3,x4,x5) => {
   }
 }
 
+const resetPledgeData = () => {
+  return {
+    type: 'RESET_PLEDGE_DATA'
+  }
+}
+
 export const mapDispatchToProps = {
   addProjectDetails,
-  addPledges
+  addPledges,
+  resetPledgeData
 }

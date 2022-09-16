@@ -21,6 +21,12 @@ export const appReducer = (state = initialState, action) => {
           minAmount: [...state.pledge.minAmount, action.minAmount]
         }
       }
+    case 'RESET_PLEDGE_DATA':
+      return {...state,
+        pledge: {
+          id: [], name: [], description: [], total: [], minAmount: []
+        }
+      }
     default:
       return state
   }
