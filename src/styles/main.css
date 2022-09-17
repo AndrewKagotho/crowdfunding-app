@@ -123,14 +123,17 @@ header {
   color: #FFF;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
   h1 {
     font-size: 1.3rem;
     margin: 20px 0 20px;
   }
+  h2 {
+    font-size: 1.2rem;
+    margin: 10px 0 25px;
+  }
   p, span {
     font-size: 0.9rem;
-    line-height: 1.5;
   }
   header {
     height: 300px;
@@ -165,30 +168,18 @@ header {
   .cards__firstSection__actions div button {
     display: none;
   }
-  .cards__secondSection {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: repeat(4, auto);
-  }
-  .cards__secondSection > div {
-    border: 1px solid red;
-  }
-  .cards__secondSection div:nth-child(2), .cards__secondSection div:nth-child(3) {
-    border-left: 1px solid hsla(0deg, 0%, 48%, 0.1);
-    padding-left: 40px;
-  }
-  .cards__secondSection div span {
+  .cards__thirdSection li span:nth-child(2) {
     display: block;
+    margin-top: 5px;
+    float: none !important;
   }
-  .cards__secondSection div span:nth-child(1) {
-    font-size: 1.7rem;
-    font-weight: 700;
-    color: #000;
+  .cards__thirdSection b {
+    font-size: 1.7rem !important;
   }
-  .cards__secondSection div span:nth-child(2) {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #777;
+  .cards__thirdSection button {
+    display: block;
+    float: none !important;
+    margin-top: 15px;
   }
 }
 .cards__firstSection > svg {

@@ -1,4 +1,4 @@
-@media screen and (max-width: 400px ) {
+@media screen and (max-width: 450px ) {
 
   // Variables
   $small-font: .9rem;
@@ -6,7 +6,6 @@
   $bold-x1: 500;
   $bold-x2: 700;
   $padding: 25px;
-  $line_height: 1.5;
 
   // Base
   h1 {
@@ -14,10 +13,12 @@
     margin: 20px 0 20px;
   }
 
-  p, span {
-    font-size: $small-font;
-    line-height: $line_height;
+  h2 {
+    font-size: 1.2rem;
+    margin: 10px 0 25px;
   }
+
+  p, span { font-size: $small-font; }
   
   // Layout
   header {
@@ -53,36 +54,19 @@
     div button { display: none; }
   }
 
-  .cards__secondSection {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: repeat(4, auto);
-
-    & > div {
-      border: 1px solid red;
+  .cards__thirdSection {
+    li span:nth-child(2) {
+      display: block;
+      margin-top: 5px;
+      float: none !important;
     }
-  
-    div {
-      &:nth-child(2), &:nth-child(3) {
-        border-left: 1px solid $light-grey;
-        padding-left: 40px;
-      }
-  
-      span {
-        display: block;
-  
-        &:nth-child(1) {
-          font-size: 1.7rem;
-          font-weight: $bold-x2;
-          color: $dark;
-        }
-  
-        &:nth-child(2) {
-          font-size: $small-font;
-          font-weight: $bold-x1;
-          color: $grey-font;
-        }
-      }
+
+    b { font-size: 1.7rem !important; }
+    
+    button {
+      display: block;
+      float: none !important;
+      margin-top: 15px;
     }
   }
 }
