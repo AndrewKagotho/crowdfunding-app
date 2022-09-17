@@ -1,21 +1,18 @@
 .cards {
   width: 40%;
-
-  & > section {
-    @include card;
-    transition: scale 0.1s linear;
-  }
+  & > section { @include card; }
 }
 
 button {
   height: 40px;
   padding: 0 25px;
   border: none;
-  border-radius: 20px;
+  border-radius: 50px;
   background-color: $theme;
   color: $neutral;
-}
 
-button:hover {
-  background-color: $theme-hover;
+  &:hover {
+    background-color: $theme-hover;
+    cursor: pointer;
+  }
 }

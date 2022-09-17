@@ -11,10 +11,11 @@ const Modal = ({props, modalRef, radioRef, selectPledgeRef, successPledgeRef}) =
 
   const [formData, setFormData] = React.useState({
     pledgeID: '',
-    amount: ''
+    amount: '',
+    left: ''
   })
   
-  const handleChange = (e) => setFormData({...formData, amount: e.target.value})
+  const handleChange = (e) => {setFormData({...formData, amount: e.target.value})}
 
   const expandCardRef = React.useRef([])
   const pledgeCardRef = React.useRef([])
@@ -81,7 +82,10 @@ const Modal = ({props, modalRef, radioRef, selectPledgeRef, successPledgeRef}) =
 
   const pledges = props.pledgeName.map((item, index) =>
     <li key={index} ref={(item) => pledgeCardRef.current[index] = item} onClick={() =>
-      setFormData({...formData, pledgeID: props.pledgeID[index]})
+      setFormData({...formData,
+        pledgeID: props.pledgeID[index],
+        left: props.total[index]
+      })
     }>
       <div className='grid' onClick={() => expandCard(index)}>
         <div className='radio'>
@@ -100,11 +104,11 @@ const Modal = ({props, modalRef, radioRef, selectPledgeRef, successPledgeRef}) =
         <span>Enter your pledge</span>
         <div>
           <span>$</span>
-          <input type='text' name='amount' defaultValue={props.minAmount[index]} min="3" onChange={handleChange}/>
+          <input type='text' name='amount' defaultValue={props.minAmount[index]} onChange={handleChange}/>
         </div>
         <button type='submit'>Continue</button>
       </div>
-    </li>    
+    </li>
   )
 
   const handleSubmit = (e) => {

@@ -1,9 +1,9 @@
 export const initialState = {
   project: {
-    target: '',
-    days: '',
-    amounted: '',
-    backers: ''
+    target: '0',
+    days: '0',
+    amounted: '0',
+    backers: '0'
   },
   pledge: {
     id: [],

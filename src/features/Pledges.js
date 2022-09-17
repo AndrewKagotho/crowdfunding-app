@@ -6,7 +6,6 @@ const Pledges = ({props, modalRef, radioRef, selectPledgeRef, successPledgeRef})
 
   // const showCheckedModal = (arg) => {
   //   modalRef.current.style.display = 'block'
-  //   document.body.style.overflow = 'hidden'
   //   radioRef.current[arg].checked = 'true'
 
   //   if (typeof window != 'undefined' && window.document) {
@@ -26,7 +25,7 @@ const Pledges = ({props, modalRef, radioRef, selectPledgeRef, successPledgeRef})
       <span>Pledge ${props.minAmount[index]} or more</span>
       <p>{props.description[index]}</p>
       <span><b>{props.total[index]}</b> left</span>
-      <button onClick={showModal}>Select reward</button>
+      <button onClick={() => showModal()}>Select reward</button>
     </li>
   )
 

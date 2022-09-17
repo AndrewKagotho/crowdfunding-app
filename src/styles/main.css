@@ -11,6 +11,10 @@ body {
   background-color: #F6F6F6;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 h1 {
   text-align: center;
   margin: 5px 0 10px;
@@ -57,6 +61,13 @@ p {
   grid-template-rows: repeat(2, auto);
   padding: 25px 25px 0;
 }
+main {
+  position: relative;
+  left: 50%;
+  translate: -50% 0;
+  translate: -50% -75px;
+}
+
 svg {
   scale: 1;
 }
@@ -68,20 +79,19 @@ svg {
   border-radius: 5px;
   background-color: #FFF;
   padding: 35px;
-  transition: scale 0.1s linear;
 }
 
 button {
   height: 40px;
   padding: 0 25px;
   border: none;
-  border-radius: 20px;
+  border-radius: 50px;
   background-color: hsl(176deg, 50%, 47%);
   color: #FFF;
 }
-
 button:hover {
   background-color: hsl(176deg, 50%, 40%);
+  cursor: pointer;
 }
 
 header {
@@ -113,41 +123,95 @@ header {
   color: #FFF;
 }
 
-.body_content {
-  position: relative;
-  left: 50%;
-  translate: -50% 0;
-  translate: -50% -75px;
+@media screen and (max-width: 400px) {
+  h1 {
+    font-size: 1.3rem;
+    margin: 20px 0 20px;
+  }
+  p, span {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  header {
+    height: 300px;
+    background-image: url("http://127.0.0.1:8887/images/image-hero-mobile.jpg");
+  }
+  .header__elements {
+    width: 90%;
+    top: 30px;
+  }
+  .header__elements ul {
+    display: none;
+  }
+  .cards {
+    width: 80%;
+  }
+  .cards > section {
+    padding: 25px;
+  }
+  button {
+    height: 50px;
+  }
+  .cards__firstSection__actions > button {
+    width: 80%;
+  }
+  .cards__firstSection__actions svg {
+    position: absolute;
+    translate: -50% 0;
+  }
+  .cards__firstSection__actions svg path {
+    translate: -20% -20%;
+  }
+  .cards__firstSection__actions div button {
+    display: none;
+  }
+  .cards__secondSection {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(4, auto);
+  }
+  .cards__secondSection > div {
+    border: 1px solid red;
+  }
+  .cards__secondSection div:nth-child(2), .cards__secondSection div:nth-child(3) {
+    border-left: 1px solid hsla(0deg, 0%, 48%, 0.1);
+    padding-left: 40px;
+  }
+  .cards__secondSection div span {
+    display: block;
+  }
+  .cards__secondSection div span:nth-child(1) {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #000;
+  }
+  .cards__secondSection div span:nth-child(2) {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #777;
+  }
 }
-
 .cards__firstSection > svg {
   position: absolute;
   left: 50%;
-  translate: -50% calc(-50% - 40px);
+  translate: -50% calc(-50% - 35px);
 }
 
 .cards__firstSection__actions {
   display: flex;
   justify-content: space-between;
 }
-.cards__firstSection__actions > span {
-  background-color: hsl(176deg, 50%, 47%);
-  color: #FFF;
-}
-.cards__firstSection__actions span {
-  padding: 12px 30px;
-  border-radius: 20px;
-}
-.cards__firstSection__actions > div svg {
+.cards__firstSection__actions svg {
   position: absolute;
-  translate: -35% 0;
+  translate: -50% 0;
 }
-.cards__firstSection__actions > div svg g {
-  scale: 0.7;
+.cards__firstSection__actions svg path {
+  translate: -20% -20%;
 }
-.cards__firstSection__actions > div button {
+.cards__firstSection__actions div button {
   color: #777;
-  background-color: hsla(0deg, 0%, 48%, 0.2);
+  text-indent: 8px;
+  background-color: hsla(0deg, 0%, 48%, 0.1);
   margin-bottom: 0px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -156,10 +220,10 @@ header {
 .cards__secondSection {
   display: grid;
   grid-template-columns: repeat(3, auto);
-  grid-template-rows: 2;
+  grid-template-rows: repeat(2, auto);
 }
 .cards__secondSection div:nth-child(2), .cards__secondSection div:nth-child(3) {
-  border-left: 1px solid hsla(0deg, 0%, 48%, 0.2);
+  border-left: 1px solid hsla(0deg, 0%, 48%, 0.1);
   padding-left: 40px;
 }
 .cards__secondSection div span {
@@ -188,7 +252,7 @@ header {
 }
 .cards__secondSection progress[value]::-webkit-progress-bar {
   border-radius: 5px;
-  background-color: hsla(0deg, 0%, 48%, 0.2);
+  background-color: hsla(0deg, 0%, 48%, 0.1);
 }
 .cards__secondSection progress[value]::-webkit-progress-value {
   border-radius: 5px;
@@ -285,7 +349,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px 25px;
-  border-top: 1px solid hsla(0deg, 0%, 48%, 0.2);
+  border-top: 1px solid hsla(0deg, 0%, 48%, 0.1);
 }
 .modal__card__expand div {
   height: 40px;
@@ -293,7 +357,7 @@ header {
   margin: 0 10px 0 auto;
   padding: 0 15px;
   border-radius: 20px;
-  border: 1px solid hsla(0deg, 0%, 48%, 0.2);
+  border: 1px solid hsla(0deg, 0%, 48%, 0.1);
 }
 .modal__card__expand div:hover {
   border: 1px solid hsl(176deg, 50%, 47%);
@@ -325,7 +389,7 @@ header {
   height: 18px;
   display: inline-block;
   border-radius: 50%;
-  border: 1px solid hsla(0deg, 0%, 48%, 0.6);
+  border: 1px solid hsla(0deg, 0%, 48%, 0.2);
   position: relative;
   top: 50%;
   translate: 0 -50%;

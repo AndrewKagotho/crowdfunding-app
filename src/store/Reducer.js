@@ -21,6 +21,12 @@ export const appReducer = (state = initialState, action) => {
           minAmount: [...state.pledge.minAmount, action.minAmount]
         }
       }
+    case 'UPDATE_PLEDGE_TOTALS':
+      return {...state,
+        pledge: {...state.pledge,
+          total: action.total
+        }
+      }
     case 'RESET_PLEDGE_DATA':
       return {...state,
         pledge: {

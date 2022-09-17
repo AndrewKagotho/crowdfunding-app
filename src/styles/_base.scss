@@ -12,6 +12,8 @@ body {
   background-color: #F6F6F6;
 }
 
+* { box-sizing: border-box; }
+
 h1 {
   text-align: center;
   margin: 5px 0 10px;
@@ -31,12 +33,10 @@ p, span {
   font-size: $small-font;
   font-weight: $bold-x1;
   color: $grey-font;
-  line-height: 1.7;
+  line-height: $line_height;
 }
 
-p {
-  margin-bottom: 20px;
-}
+p { margin-bottom: 20px; }
 
 .description {
   width: 100%;
@@ -83,6 +83,11 @@ p {
   translate: -50% -50%;
 }
 
+main {
+  @include h-center-content;
+  translate: -50% -75px;
+}
+
 @mixin green_bold_text {
   font-weight: $bold-x2;
   color: $theme;
@@ -95,7 +100,7 @@ p {
 }
 
 @mixin card_border {
-  border: 1px solid $light-grey;
+  border: 1px solid $mid-grey;
   border-radius: 5px;
 }
 

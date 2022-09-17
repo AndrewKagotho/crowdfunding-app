@@ -25,7 +25,7 @@ const View = (props) => {
   return (
     <>
       <Header />
-      <div className='body_content cards flex'>
+      <main className='cards flex'>
         <section className='cards__firstSection'>
           <Intro modalRef={modalRef} selectPledgeRef={selectPledgeRef} successPledgeRef={successPledgeRef} />
         </section>
@@ -35,7 +35,7 @@ const View = (props) => {
         <section className='cards__thirdSection'>
           <Pledges props={props} modalRef={modalRef} selectPledgeRef={selectPledgeRef} successPledgeRef={successPledgeRef} />
         </section>
-      </div>
+      </main>
       <Modal props={props} modalRef={modalRef} radioRef={radioRef} selectPledgeRef={selectPledgeRef} successPledgeRef={successPledgeRef} />
     </>
   )

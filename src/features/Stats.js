@@ -2,15 +2,15 @@ const Stats = ({props}) => {
 
 let amounted = props.amounted
 
-const comma = (num) => {
-  for(let x=num.length-1; x>=0; x--) {
+// const comma = (num) => {
+//   for(let x=num.length-1; x>=0; x--) {
 
-    // num[x] = ',' + num[x]
-    num+=20
-  }
-}
+//     num[x] = ',' + num[x]
+//     num+=20
+//   }
+// }
 
-comma(amounted)
+// comma(amounted)
 
   return (
     <>

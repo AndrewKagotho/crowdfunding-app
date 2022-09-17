@@ -1,13 +1,8 @@
-.body_content {
-  @include h-center-content;
-  translate: -50% -75px;
-}
-
 .cards__firstSection {
   & > svg {
     position: absolute;
     left: 50%;
-    translate: -50% calc(-50% - 40px);
+    translate: -50% calc(-50% - $padding);
   }
 }
 
@@ -15,44 +10,28 @@
   display: flex;
   justify-content: space-between;
 
-  & > span {
-    background-color: $theme;
-    color: $neutral;
+  svg {
+    position: absolute;
+    translate: -50% 0;
+    path { translate: -20% -20%; }
   }
 
-  span {
-    padding: 12px 30px;
-    border-radius: 20px;
-  }
-
-  & > div {
-
-    svg {
-      position: absolute;
-      translate: -35% 0;
-
-      g {
-        scale: .7;
-      }
-    }
-
-    button {
-      color: $grey-font;
-      background-color: $light-grey;
-      margin-bottom: 0px;
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-    }
+  div button {
+    color: $grey-font;
+    text-indent: 8px;
+    background-color: $light-grey;
+    margin-bottom: 0px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
   }
 }
 
 .cards__secondSection {
   display: grid;
   grid-template-columns: repeat(3, auto);
-  grid-template-rows: 2;
+  grid-template-rows: repeat(2, auto);
 
   div {
-
     &:nth-child(2), &:nth-child(3) {
       border-left: 1px solid $light-grey;
       padding-left: 40px;
@@ -64,7 +43,7 @@
       &:nth-child(1) {
         font-size: 1.7rem;
         font-weight: $bold-x2;
-        color: $black;
+        color: $dark;
       }
 
       &:nth-child(2) {
@@ -114,7 +93,7 @@
     b {
       font-size: 1.3rem;
       display: inline-block;
-      color: $black;
+      color: $dark;
       translate: 0 2px;
     }
 

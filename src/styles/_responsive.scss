@@ -1,0 +1,88 @@
+@media screen and (max-width: 400px ) {
+
+  // Variables
+  $small-font: .9rem;
+  $large-font: 1.3rem;
+  $bold-x1: 500;
+  $bold-x2: 700;
+  $padding: 25px;
+  $line_height: 1.5;
+
+  // Base
+  h1 {
+    font-size: $large-font;
+    margin: 20px 0 20px;
+  }
+
+  p, span {
+    font-size: $small-font;
+    line-height: $line_height;
+  }
+  
+  // Layout
+  header {
+    height: 300px;
+    background-image: url('http://127.0.0.1:8887/images/image-hero-mobile.jpg');
+  }
+
+  .header__elements {
+    width: 90%;
+    top: 30px;
+    ul { display: none; }
+  }
+
+  // Components
+  .cards {
+    width: 80%;
+    & > section { padding: $padding; }
+  }
+  
+  button { height: 50px; }
+
+  // View
+  .cards__firstSection__actions {
+    & > button {
+      width: 80%;
+    }
+    svg {
+      position: absolute;
+      translate: -50% 0;
+      path { translate: -20% -20%; }
+    }
+  
+    div button { display: none; }
+  }
+
+  .cards__secondSection {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(4, auto);
+
+    & > div {
+      border: 1px solid red;
+    }
+  
+    div {
+      &:nth-child(2), &:nth-child(3) {
+        border-left: 1px solid $light-grey;
+        padding-left: 40px;
+      }
+  
+      span {
+        display: block;
+  
+        &:nth-child(1) {
+          font-size: 1.7rem;
+          font-weight: $bold-x2;
+          color: $dark;
+        }
+  
+        &:nth-child(2) {
+          font-size: $small-font;
+          font-weight: $bold-x1;
+          color: $grey-font;
+        }
+      }
+    }
+  }
+}
