@@ -72,28 +72,6 @@ svg {
   scale: 1;
 }
 
-.cards {
-  width: 40%;
-}
-.cards > section {
-  border-radius: 5px;
-  background-color: #FFF;
-  padding: 35px;
-}
-
-button {
-  height: 40px;
-  padding: 0 25px;
-  border: none;
-  border-radius: 50px;
-  background-color: hsl(176deg, 50%, 47%);
-  color: #FFF;
-}
-button:hover {
-  background-color: hsl(176deg, 50%, 40%);
-  cursor: pointer;
-}
-
 header {
   height: 375px;
   background-image: url("http://127.0.0.1:8887/images/image-hero-desktop.jpg");
@@ -123,65 +101,28 @@ header {
   color: #FFF;
 }
 
-@media screen and (max-width: 450px) {
-  h1 {
-    font-size: 1.3rem;
-    margin: 20px 0 20px;
-  }
-  h2 {
-    font-size: 1.2rem;
-    margin: 10px 0 25px;
-  }
-  p, span {
-    font-size: 0.9rem;
-  }
-  header {
-    height: 300px;
-    background-image: url("http://127.0.0.1:8887/images/image-hero-mobile.jpg");
-  }
-  .header__elements {
-    width: 90%;
-    top: 30px;
-  }
-  .header__elements ul {
-    display: none;
-  }
-  .cards {
-    width: 80%;
-  }
-  .cards > section {
-    padding: 25px;
-  }
-  button {
-    height: 50px;
-  }
-  .cards__firstSection__actions > button {
-    width: 80%;
-  }
-  .cards__firstSection__actions svg {
-    position: absolute;
-    translate: -50% 0;
-  }
-  .cards__firstSection__actions svg path {
-    translate: -20% -20%;
-  }
-  .cards__firstSection__actions div button {
-    display: none;
-  }
-  .cards__thirdSection li span:nth-child(2) {
-    display: block;
-    margin-top: 5px;
-    float: none !important;
-  }
-  .cards__thirdSection b {
-    font-size: 1.7rem !important;
-  }
-  .cards__thirdSection button {
-    display: block;
-    float: none !important;
-    margin-top: 15px;
-  }
+.cards {
+  width: 40%;
 }
+.cards > section {
+  border-radius: 5px;
+  background-color: #FFF;
+  padding: 35px;
+}
+
+button {
+  height: 40px;
+  padding: 0 25px;
+  border: none;
+  border-radius: 50px;
+  background-color: hsl(176deg, 50%, 47%);
+  color: #FFF;
+}
+button:hover {
+  background-color: hsl(176deg, 50%, 40%);
+  cursor: pointer;
+}
+
 .cards__firstSection > svg {
   position: absolute;
   left: 50%;
@@ -432,4 +373,148 @@ header {
   position: relative;
   left: 50%;
   translate: -50% 0;
+}
+
+@media screen and (max-width: 450px) {
+  h1 {
+    font-size: 1.3rem;
+    margin: 20px 0 20px;
+  }
+  h2 {
+    font-size: 1.2rem;
+    margin: 10px 0 25px;
+  }
+  p, span {
+    font-size: 0.9rem;
+  }
+  header {
+    height: 300px;
+    background-image: url("http://127.0.0.1:8887/images/image-hero-mobile.jpg");
+  }
+  .header__elements {
+    width: 90%;
+    top: 30px;
+  }
+  .header__elements ul {
+    display: none;
+  }
+  .cards {
+    width: 80%;
+  }
+  .cards > section {
+    padding: 25px;
+  }
+  button {
+    height: 50px;
+  }
+  .cards__firstSection__actions > button {
+    width: 80%;
+  }
+  .cards__firstSection__actions svg {
+    position: absolute;
+    translate: -50% 0;
+  }
+  .cards__firstSection__actions svg path {
+    translate: -20% -20%;
+  }
+  .cards__firstSection__actions div button {
+    display: none;
+  }
+  .cards__secondSection {
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(4, auto);
+  }
+  .cards__secondSection div {
+    grid-column: 1/2;
+  }
+  .cards__secondSection div:nth-child(2), .cards__secondSection div:nth-child(3) {
+    border-left: none;
+    border-top: 1px solid hsla(0deg, 0%, 48%, 0.1);
+    padding-left: 0;
+    margin-top: 10px;
+  }
+  .cards__secondSection div span {
+    text-align: center;
+  }
+  .cards__secondSection div span:nth-child(1) {
+    font-size: 1.9rem;
+  }
+  .cards__secondSection div span:nth-child(2) {
+    font-size: 0.9rem;
+  }
+  .cards__thirdSection li span:nth-child(2) {
+    display: block;
+    margin-top: 5px;
+    float: none;
+  }
+  .cards__thirdSection b {
+    font-size: 1.9rem;
+  }
+  .cards__thirdSection button {
+    display: block;
+    float: none !important;
+    margin-top: 15px;
+  }
+  .modal {
+    width: 100vw;
+    height: 100vh;
+  }
+  .modal h2 {
+    margin: 15px 0 25px;
+  }
+  .modal .description {
+    margin-bottom: 25px;
+  }
+  .modal__card {
+    width: 80%;
+  }
+  .modal__card svg {
+    margin-top: 20px;
+  }
+  .modal__card ul b {
+    display: inline-block;
+    padding-right: 3px;
+    color: #000;
+    scale: 1.2;
+  }
+  .modal__card__header label {
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+  .modal__card__header span:nth-child(2) {
+    padding-left: 0;
+    display: block;
+  }
+  .modal__card__header span:nth-child(3) {
+    float: left;
+  }
+  .modal__card__expand > span {
+    display: block;
+  }
+  .modal__card__expand div {
+    height: 40px;
+    display: table;
+    margin: 0 10px 0 auto;
+    padding: 0 15px;
+    border-radius: 20px;
+    border: 1px solid hsla(0deg, 0%, 48%, 0.1);
+  }
+  .modal__card__expand div:hover {
+    border: 1px solid hsl(176deg, 50%, 47%);
+  }
+  .modal__card__expand div span {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .modal__card__expand div input {
+    max-width: 35px;
+    height: 100%;
+    color: #777;
+    line-height: 1.5;
+    border: none;
+    background-color: transparent;
+  }
+  .modal__card__expand div input:focus {
+    outline: none;
+  }
 }/*# sourceMappingURL=main.css.map */

@@ -41,7 +41,7 @@
       display: block;
 
       &:nth-child(1) {
-        font-size: 1.7rem;
+        font-size: $large_x1_font;
         font-weight: $bold-x2;
         color: $dark;
       }

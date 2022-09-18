@@ -3,6 +3,7 @@
   // Variables
   $small-font: .9rem;
   $large-font: 1.3rem;
+  $large_x1_font: 1.9rem;
   $bold-x1: 500;
   $bold-x2: 700;
   $padding: 25px;
@@ -54,19 +55,106 @@
     div button { display: none; }
   }
 
+  .cards__secondSection {
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(4, auto);
+  
+    div {
+      grid-column: 1/2;
+
+      &:nth-child(2), &:nth-child(3) {
+        border-left: none;
+        border-top: 1px solid $light-grey;
+        padding-left: 0;
+        margin-top: 10px;
+      }
+  
+      span {
+        text-align: center;
+        &:nth-child(1) { font-size: $large_x1_font; }
+        &:nth-child(2) { font-size: $small-font; }
+      }
+    }
+  }
+
   .cards__thirdSection {
     li span:nth-child(2) {
       display: block;
       margin-top: 5px;
-      float: none !important;
+      float: none;
     }
 
-    b { font-size: 1.7rem !important; }
+    b { font-size: $large_x1_font; }
     
     button {
       display: block;
       float: none !important;
       margin-top: 15px;
+    }
+  }
+
+  // Modal 
+  .modal {
+    width: 100vw;
+    height: 100vh;
+  
+    h2 { margin: 15px 0 25px; }
+    .description { margin-bottom: 25px; }
+  }
+
+  .modal__card {
+    width: 80%;
+
+    svg { margin-top: 20px; }
+    ul b {
+      display: inline-block;
+      padding-right: 3px;
+      color: $dark;
+      scale: 1.2;
+    }
+  }
+
+  .modal__card__header {
+    label {
+      font-size: $small-font;
+      font-weight: $bold-x2;
+    }
+  
+    span:nth-child(2) { padding-left: 0; display: block; }
+    span:nth-child(3) { float: left; }
+  }
+
+  .modal__card__expand {
+    & > span {
+      display: block;
+    }
+  
+    div {
+      height: 40px;
+      display: table;
+      margin: 0 10px 0 auto;
+      padding: 0 15px;
+      border-radius: 20px;
+      border: 1px solid $light-grey;
+  
+      &:hover { border: 1px solid $theme; }
+  
+      span {
+        display: table-cell;
+        vertical-align: middle;
+        // border: 1px solid red;
+      }
+  
+      input {
+        max-width: 35px;
+        height: 100%;
+        color: $grey-font;
+        line-height: 1.5;
+        border: none;
+        background-color: transparent;
+      }
+  
+      input:focus { outline: none; }
     }
   }
 }
