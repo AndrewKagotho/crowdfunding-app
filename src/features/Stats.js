@@ -2,15 +2,9 @@ const Stats = ({props}) => {
 
 let amounted = props.amounted
 
-// const comma = (num) => {
-//   for(let x=num.length-1; x>=0; x--) {
-
-//     num[x] = ',' + num[x]
-//     num+=20
-//   }
+// function numberWithCommas(x) {
+//     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 // }
-
-// comma(amounted)
 
   return (
     <>
