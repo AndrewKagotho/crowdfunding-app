@@ -6,7 +6,7 @@
   $amount = $data->amount;
   $left = $data->left - 1;
 
-  $sql = "INSERT INTO `history`(`pledgeID`, `amount`, `date`) VALUES ('$pledgeID','$amount',NOW())";
+  $sql = "INSERT INTO `history`(`historyID`, `pledgeID`, `amount`, `date`) VALUES ('$left','$pledgeID','$amount',NOW())";
   $sql2 = "UPDATE `pledges` SET `total`='$left' WHERE `pledgeID` = '$pledgeID'";
 
   $result = mysqli_query($conn, $sql);
