@@ -1,6 +1,4 @@
 <?php
-  header("Access-Control-Allow-Origin: *");
-  
   $resArray = [];
   $counter = 0;
 
