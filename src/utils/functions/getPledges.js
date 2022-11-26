@@ -1,6 +1,8 @@
 import axios from 'axios'
-
-let getPledges = 'http://localhost/crowdfunding-app/src/utils/php/getPledges.php'
+// http://localhost/crowdfunding-app/src/utils/php/getPledges.php
+// https://andrewkagotho.github.io/crowdfunding-app/
+// https://github.com/AndrewKagotho/crowdfunding-app/blob/master/src/utils/php/getPledges.php
+let getPledges = 'https://github.com/AndrewKagotho/crowdfunding-app/blob/master/src/utils/php/getPledges.php'
 
 export const fetchPledges = (props) => {
   props.resetPledgeData()
