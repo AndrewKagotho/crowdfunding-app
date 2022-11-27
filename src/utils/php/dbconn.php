@@ -4,13 +4,20 @@
   header("Access-Control-Allow-Methods: *");
   header("Content-Type: application.json; charset=UTF-8");
 
-  $dbserver = 'containers-us-west-84.railway.app:5450';
-  $dbuser = 'root';
-  $dbpass = 'zBadd7z8UfXyDJNhyKOB';
-  $dbname = 'railway';
+  // $dbserver = 'containers-us-west-84.railway.app:5450';
+  // $dbuser = 'root';
+  // $dbpass = 'zBadd7z8UfXyDJNhyKOB';
+  // $dbname = 'railway';
+
+  $dbserver = 'eu-cdbr-west-03.cleardb.net';
+  $dbuser = 'b1c5af0d406b2d';
+  $dbpass = '678ea297';
+  $dbname = 'heroku_cd39df722fedf47';
 
   $conn = mysqli_connect($dbserver, $dbuser, $dbpass, $dbname);
 
+  if($conn)
+    echo 'Connection successful';
   if(!$conn)
     echo 'Connection unsuccessful';
 ?>
