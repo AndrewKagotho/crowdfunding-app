@@ -24,10 +24,12 @@
 
   $result = mysqli_query($conn, $sql);
 
-  while($object = mysqli_fetch_object($result)) {
-    $resArray[$counter] = $object;
-    $counter++;
-  }
+  // while($object = mysqli_fetch_object($result)) {
+  //   $resArray[$counter] = $object;
+  //   $counter++;
+  // }
 
-  echo json_encode($resArray);
+  // echo json_encode($resArray);
+
+  echo json_encode(mysqli_fetch_object($result))
 ?>
