@@ -2,7 +2,7 @@
   $resArray = [];
   $counter = 0;
 
-  require './index.php';
+  require '../index.php';
 
   $sql = 'SELECT * FROM `heroku_cd39df722fedf47.pledges`';
 
