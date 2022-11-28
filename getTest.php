@@ -4,7 +4,7 @@
 
   require './index.php';
 
-  $sql = 'SELECT * FROM `pledges`';
+  $sql = 'SELECT * FROM `heroku_cd39df722fedf47.pledges`';
 
   $result = mysqli_query($conn, $sql);
 
