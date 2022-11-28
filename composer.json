@@ -1,6 +1,0 @@
-{
-  "require": {
-    "PHP": "8.1.*"
-  },
-  "post-install-cmd": ["php artisan clear-compiled", "chmod -R 777 public/"]
-}
