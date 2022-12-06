@@ -5,11 +5,11 @@ let amounted = props.amounted
   return (
     <>
       <div>
-        <span>${addCommas(amounted)}</span>
-        <span>of ${addCommas(props.target)} backed</span>
+        <span>${amounted}</span>
+        <span>of ${props.target} backed</span>
       </div>
       <div>
-        <span>{addCommas(props.backers)}</span>
+        <span>{props.backers}</span>
         <span>total backers</span>
       </div>
       <div>
@@ -23,6 +23,6 @@ let amounted = props.amounted
 
 export default Stats
 
-function addCommas(arg) {
-    return arg.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-}
+// function addCommas(arg) {
+//   return arg.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+// }

@@ -1,11 +1,13 @@
 <?php
 
-// if(isset($_SERVER['HTTP_ORIGIN'])) {
-  header("Access-Control-Allow-Origin: *");
-  header("Access-Control-Allow-Headers: Origin, Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With, Accept");
-  header("Access-Control-Allow-Methods: *");
-  header("Content-Type: application.json; charset=UTF-8");
-// }
+  // if($_SERVER['REQUEST_METHOD'] == 'GET') { echo json_encode($myData); }
+
+  // if(isset($_SERVER['HTTP_ORIGIN'])) {
+  //   header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+  //   header("Access-Control-Allow-Headers: Origin, Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With, Accept");
+  //   header("Access-Control-Allow-Methods: *");
+  //   header("Content-Type: application.json; charset=UTF-8");
+  // }
 
   $dbhost = 'eu-cdbr-west-03.cleardb.net';
   $dbuser = 'b1c5af0d406b2d';
