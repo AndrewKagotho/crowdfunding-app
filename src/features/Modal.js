@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { fetchProjectDetails } from '../utils/functions/getProjectDetails'
 
-let submitPledge = 'http://localhost/crowdfunding-app/src/utils/php/submitPledge.php'
+let submitPledge = 'https://crowdfunding-app-ak.herokuapp.com/api'
 let prevCards = [0,1]
 let firstSelection = true
 let isHidden = false
@@ -12,7 +12,7 @@ const Modal = ({props, modalRef, radioRef, selectPledgeRef, successPledgeRef}) =
   const [formData, setFormData] = React.useState({
     pledgeID: '',
     amount: '',
-    left: ''
+    total: ''
   })
   
   const handleChange = (e) => {setFormData({...formData, amount: e.target.value})}
@@ -84,7 +84,7 @@ const Modal = ({props, modalRef, radioRef, selectPledgeRef, successPledgeRef}) =
     <li key={index} ref={(item) => pledgeCardRef.current[index] = item} onClick={() =>
       setFormData({...formData,
         pledgeID: props.pledgeID[index],
-        left: props.total[index]
+        total: props.total[index]
       })
     }>
       <div className='grid' onClick={() => expandCard(index)}>

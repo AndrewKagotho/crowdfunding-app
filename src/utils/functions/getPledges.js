@@ -1,9 +1,6 @@
 import axios from 'axios'
-// http://localhost/crowdfunding-app/src/utils/php/getPledges.php
-// https://andrewkagotho.github.io/crowdfunding-app/
-// https://github.com/AndrewKagotho/crowdfunding-app/blob/master/src/utils/php/getPledges.php
-let getPledges = 'https://github.com/AndrewKagotho/crowdfunding-app/blob/master/src/utils/php/getPledges.php'
-// let getPledges = 'https://files.000webhost.com/crowdfunding-app/getPledges.php'
+
+let getPledges = 'https://crowdfunding-app-ak.herokuapp.com/api/pledges'
 
 export const fetchPledges = (props) => {
   props.resetPledgeData()

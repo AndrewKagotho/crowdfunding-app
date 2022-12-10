@@ -7,24 +7,12 @@
   header("Content-Type: application.json; charset=UTF-8");
 // }
 
-  // $dbhost = 'eu-cdbr-west-03.cleardb.net';
-  // $dbuser = 'b1c5af0d406b2d';
-  // $dbpass = '678ea297';
-  // $dbname = 'heroku_cd39df722fedf47';
-
-  // var_dump($_SERVER);
-
-  // if ($_SERVER['HTTP_HOST'] == 'localhost') {
+  if ($_SERVER['HTTP_HOST'] == 'localhost') {
     $dbhost = 'localhost';
     $dbuser = 'root';
     $dbpass = '';
     $dbname = 'crowdfundingdb';
-  // }
+  }
 
   $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
-
-  if($conn)
-    echo 'Connection successful';
-  if(!$conn)
-    echo 'Connection unsuccessful';
 ?>
