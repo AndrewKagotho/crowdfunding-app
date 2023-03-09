@@ -1,31 +1,21 @@
 import React from 'react'
+import { AppContext } from '../App'
 
 const Pledges = ({props, modalRef, radioRef, selectPledgeRef, successPledgeRef}) => {
 
-  React.useEffect(() => {document.body.style.overflow = 'hidden'})
+  const { pledgeValue, modalValue } = React.useContext(AppContext)
+  const { setPledge } = pledgeValue
+  const { modal, setModal } = modalValue
 
-  // const showCheckedModal = (arg) => {
-  //   modalRef.current.style.display = 'block'
-  //   radioRef.current[arg].checked = 'true'
-
-  //   if (typeof window != 'undefined' && window.document) {
-  //     document.body.style.overflow = 'hidden';
-  //   }
-  // }
-
-  const showModal = () => {
-    modalRef.current.style.display = 'block'
-    selectPledgeRef.current.style.display = 'block'
-    successPledgeRef.current.style.display = 'none'
-  }
+  React.useEffect(() => { document.body.style.overflow = 'hidden' }, [])
   
   const pledges = props.pledgeName.map((item, index) => 
     <li key={index}>
-      <h3>{props.pledgeName[index]}</h3>
+      <h3>{item} mamxmx</h3>
       <span>Pledge ${props.minAmount[index]} or more</span>
       <p>{props.description[index]}</p>
       <span><b>{props.total[index]}</b> left</span>
-      <button onClick={() => showModal()}>Select reward</button>
+      <button onClick={() => { setModal({...modal, show: true }); setPledge({ show: true, input: index }) }}>Select reward</button>
     </li>
   )
 

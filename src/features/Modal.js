@@ -1,50 +1,31 @@
 import React from 'react'
 import axios from 'axios'
+import { AppContext } from '../App'
 import { fetchProjectDetails } from '../utils/functions/getProjectDetails'
+import { url } from '../utils/functions/getProjectDetails'
 
-let submitPledge = 'https://crowdfunding-app-ak.herokuapp.com/api'
+let submitPledge = `${url}/api`
 let prevCards = [0,1]
 let firstSelection = true
 let isHidden = false
 
 const Modal = ({props, modalRef, radioRef, selectPledgeRef, successPledgeRef}) => {
 
-  const [formData, setFormData] = React.useState({
-    pledgeID: '',
-    amount: '',
-    total: ''
-  })
-  
-  const handleChange = (e) => {setFormData({...formData, amount: e.target.value})}
-
   const expandCardRef = React.useRef([])
   const pledgeCardRef = React.useRef([])
   const nameInputRef = React.useRef([])
   const amountInputRef = React.useRef([])
 
-  const hideModal = () => modalRef.current.style.display = 'none'
+  const [formData, setFormData] = React.useState({
+    pledgeID: '',
+    amount: '',
+    total: ''
+  })
 
-  const expandCard = (arg) => {
-    disableInputs(arg)
-    radioRef.current[arg].checked = 'true'
-
-    for(let a=0; a<prevCards.length; a++) {
-      prevCards[0] = prevCards[1]
-    }
-    prevCards[1] = arg
-
-    for(let i=0; i<prevCards.length; i++ ) {
-      if(i===0) {
-        pledgeCardRef.current[prevCards[i]].style.boxShadow = 'none'
-        expandCardRef.current[prevCards[i]].style.display = 'none'
-      }
-      else {
-        pledgeCardRef.current[prevCards[i]].style.boxShadow = '0 0 3px 1px hsl(176, 50%, 47%)'
-        expandCardRef.current[prevCards[i]].style.display = 'flex'
-      }
-    }
-    reverseExpandCard()
-  }
+  const { pledgeValue, modalValue, successValue } = React.useContext(AppContext)
+  const { pledge, setPledge } = pledgeValue
+  const { modal, setModal } = modalValue
+  const { showSuccess, setShowSuccess } = successValue
 
   const disableInputs = (arg) => {
     for(let i=0; i<nameInputRef.current.length; i++ ) {
@@ -75,6 +56,47 @@ const Modal = ({props, modalRef, radioRef, selectPledgeRef, successPledgeRef}) =
     firstSelection = false
   }
 
+  const expandCard = (arg) => {
+    disableInputs(arg)
+    radioRef.current[arg].checked = 'true'
+
+    prevCards[0] = prevCards[1]
+    prevCards[1] = arg
+
+    for(let i=0; i<prevCards.length; i++ ) {
+      if(i===0) {
+        pledgeCardRef.current[prevCards[i]].style.boxShadow = 'none'
+        expandCardRef.current[prevCards[i]].style.display = 'none'
+      }
+      else {
+        pledgeCardRef.current[prevCards[i]].style.boxShadow = '0 0 3px 1px hsl(176, 50%, 47%)'
+        expandCardRef.current[prevCards[i]].style.display = 'flex'
+      }
+    }
+    reverseExpandCard()
+  }
+
+  if(!modal.init) {
+    if(modal.show) modalRef.current.style.display = 'block'
+    else modalRef.current.style.display = 'none'
+
+    if(pledge.show) {
+      selectPledgeRef.current.style.display = 'block'
+      if(pledge.input !== -1) expandCard(pledge.input)      
+    }
+    else selectPledgeRef.current.style.display = 'none'
+
+    if(showSuccess) successPledgeRef.current.style.display = 'block'
+    else successPledgeRef.current.style.display = 'none'
+  }
+  
+  const handleChange = (e) => {setFormData({...formData, amount: e.target.value})}
+
+  const hideModal = () => {
+    setModal({...modal, show: false })
+    setPledge({...pledge, show: false })
+  }
+
   const showSuccessModal = () => {
     selectPledgeRef.current.style.display = 'none'
     successPledgeRef.current.style.display = 'block'
@@ -87,7 +109,7 @@ const Modal = ({props, modalRef, radioRef, selectPledgeRef, successPledgeRef}) =
         total: props.total[index]
       })
     }>
-      <div className='grid' onClick={() => expandCard(index)}>
+      <div className='grid' onClick={() => setPledge({...pledge, input: index })}>
         <div className='radio'>
           <input type='radio' id='bamboo' name='pledge' ref={(item) => radioRef.current[index] = item}/>
           <span></span>
@@ -124,7 +146,7 @@ const Modal = ({props, modalRef, radioRef, selectPledgeRef, successPledgeRef}) =
   return (
     <div className='modal cards' ref={modalRef}>
       <section className='modal__card' ref={selectPledgeRef}>
-        <h2>Back this project</h2>
+        <h2>Back this project :{pledge.input}</h2>
         <svg onClick={hideModal} width="15" height="15"><path d="M11.314 0l2.828 2.828L9.9 7.071l4.243 4.243-2.828 2.828L7.07 9.9l-4.243 4.243L0 11.314 4.242 7.07 0 2.828 2.828 0l4.243 4.242L11.314 0z" fill="#000" fillRule="evenodd" opacity=".4"/></svg>
         <span className='description'>Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?</span>
         <form onSubmit={handleSubmit}>

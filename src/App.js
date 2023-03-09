@@ -1,26 +1,30 @@
 import React from 'react'
 import View from './View'
 import './styles/main.css'
+  
+export const AppContext = React.createContext()
 
-function App() {
+const App = () => {
 
-  // const [state, setState] = React.useState({data: ''})
+  React.useEffect(() => {
+    setModal({ init: false })
+  }, [])
 
-  // React.useEffect(() => {
-  //   fetch('/api')
-  //   .then((response) => response.json())
-  //   .then((json) => console.log(json))
-  // }, [])
+  const [ pledge, setPledge ] = React.useState({ show: false, input: -1 })
+  const [ modal, setModal ] = React.useState({ init: true, show: false })
+  const [ showSuccess, setShowSuccess ] = React.useState( false )
 
-  // React.useEffect(() => {
-  //   fetch("/api")
-  //   .then((res) => res.json())
-  //   .then((data) => setData(data.message))
-  // }, [])
+  const pledgeValue = { pledge, setPledge }
+  const modalValue = { modal, setModal }
+  const successValue = { showSuccess, setShowSuccess }
+
+  const values = { pledgeValue, modalValue, successValue }
 
   return (
     <div className='App'>
-      <View />
+      <AppContext.Provider value={values} >
+        <View />
+      </AppContext.Provider>
     </div>
   )
 }

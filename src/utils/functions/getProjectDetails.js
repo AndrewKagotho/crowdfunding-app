@@ -1,6 +1,9 @@
 import axios from 'axios'
 
-let getProjectDetails = 'https://crowdfunding-app-ak.herokuapp.com/api'
+// export const url = "https://crowdfunding-app-ak.herokuapp.com"
+export const url = "http://localhost:3001"
+
+let getProjectDetails = `${url}/api`
 let totalArray = []
 
 export const fetchProjectDetails = (props) => {

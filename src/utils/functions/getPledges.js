@@ -1,6 +1,7 @@
 import axios from 'axios'
+import { url } from './getProjectDetails'
 
-let getPledges = 'https://crowdfunding-app-ak.herokuapp.com/api/pledges'
+let getPledges = `${url}/api/pledges`
 
 export const fetchPledges = (props) => {
   props.resetPledgeData()
