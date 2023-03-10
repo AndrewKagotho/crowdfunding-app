@@ -1,12 +1,17 @@
+// import React from 'react'
+// import { AppContext } from '../App'
+
 const Stats = ({props}) => {
 
-let amounted = props.amounted
+  let amounted = props.amounted
+
+  const addCommas = (num) => { return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') }
 
   return (
     <>
       <div>
-        <span>${amounted}</span>
-        <span>of ${props.target} backed</span>
+        <span>${addCommas(amounted)}</span>
+        <span>of ${addCommas(props.target)} backed</span>
       </div>
       <div>
         <span>{props.backers}</span>
@@ -22,7 +27,3 @@ let amounted = props.amounted
 }
 
 export default Stats
-
-// function addCommas(arg) {
-//   return arg.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-// }

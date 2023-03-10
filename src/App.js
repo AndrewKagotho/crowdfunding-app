@@ -10,13 +10,13 @@ const App = () => {
     setModal({ init: false })
   }, [])
 
-  const [ pledge, setPledge ] = React.useState({ show: false, input: -1 })
-  const [ modal, setModal ] = React.useState({ init: true, show: false })
-  const [ showSuccess, setShowSuccess ] = React.useState( false )
+  const [ pledge, setPledge ] = React.useState({ showAll: false, input: -1 })
+  const [ modal, setModal ] = React.useState({ show: false })
+  const [ success, setSuccess ] = React.useState({ show: false })
 
   const pledgeValue = { pledge, setPledge }
   const modalValue = { modal, setModal }
-  const successValue = { showSuccess, setShowSuccess }
+  const successValue = { success, setSuccess }
 
   const values = { pledgeValue, modalValue, successValue }
 

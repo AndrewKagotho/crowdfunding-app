@@ -1,11 +1,11 @@
 import React from 'react'
 import { AppContext } from '../App'
 
-const Intro = ({modalRef, selectPledgeRef, successPledgeRef}) => {
+const Intro = () => {
 
   const { pledgeValue, modalValue } = React.useContext(AppContext)
   const { setPledge } = pledgeValue
-  const { modal, setModal } = modalValue
+  const { setModal } = modalValue
 
   const bookmarkButtonRef = React.useRef()
   const svgCircleRef = React.useRef()
@@ -25,8 +25,8 @@ const Intro = ({modalRef, selectPledgeRef, successPledgeRef}) => {
       <h1>Mastercraft Bamboo Monitor Riser</h1>
       <span className='description'>A beautiful and handcrafted monitor stand to reduce neck and eye strain.</span>
       <div className='cards__firstSection__actions'>
-        <button onClick={() => { setModal({...modal, show: true }); setPledge({ show: true, input: -1 })}}>Back this project</button>
-        <div onClick={bookmark}>
+        <button onClick={() => { setModal({ show: true }); setPledge({ showAll: true, input: -1 })}}>Back this project</button>
+        <div onClick={ bookmark }>
           <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg"><g fill="none" fillRule="evenodd"><circle ref={svgCircleRef} fill="#2F2F2F" cx="20" cy="20" r="20"/><path ref={svgPathRef} fill="#B1B1B1" d="M23 19v18l5-5.058L33 37V19z"/></g></svg>
           <button ref={bookmarkButtonRef}>Bookmark</button>
         </div>

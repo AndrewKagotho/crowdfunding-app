@@ -1,21 +1,21 @@
 import React from 'react'
 import { AppContext } from '../App'
 
-const Pledges = ({props, modalRef, radioRef, selectPledgeRef, successPledgeRef}) => {
+const Pledges = ({props}) => {
 
   const { pledgeValue, modalValue } = React.useContext(AppContext)
   const { setPledge } = pledgeValue
-  const { modal, setModal } = modalValue
+  const { setModal } = modalValue
 
   React.useEffect(() => { document.body.style.overflow = 'hidden' }, [])
   
   const pledges = props.pledgeName.map((item, index) => 
     <li key={index}>
-      <h3>{item} mamxmx</h3>
+      <h3>{item}</h3>
       <span>Pledge ${props.minAmount[index]} or more</span>
       <p>{props.description[index]}</p>
       <span><b>{props.total[index]}</b> left</span>
-      <button onClick={() => { setModal({...modal, show: true }); setPledge({ show: true, input: index }) }}>Select reward</button>
+      <button onClick={() => { setModal({ show: true }); setPledge({ showAll: true, input: index }) }}>Select reward</button>
     </li>
   )
 

@@ -7,7 +7,6 @@ const addProjectDetails = (x1,x2,x3,x4) => {
     backers: x4
   }
 }
-
 const addPledges = (x1,x2,x3,x4,x5) => {
   return {
     type: 'ADD_PLEDGES',

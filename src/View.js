@@ -9,16 +9,12 @@ import Modal from './features/Modal'
 import { fetchProjectDetails } from './utils/functions/getProjectDetails'
 import { fetchPledges } from './utils/functions/getPledges'
 
-const View = (props) => {
-  
-  const modalRef = React.useRef()
-  const selectPledgeRef = React.useRef()
-  const successPledgeRef = React.useRef()
-  const radioRef = React.useRef([])
+const View = props => {
 
   React.useEffect(() => {
     fetchProjectDetails(props)
     fetchPledges(props)
+
     // eslint-disable-next-line
   }, [])
 
@@ -27,16 +23,16 @@ const View = (props) => {
       <Header />
       <main className='cards flex'>
         <section className='cards__firstSection'>
-          <Intro modalRef={modalRef} selectPledgeRef={selectPledgeRef} successPledgeRef={successPledgeRef} />
+          <Intro />
         </section>
         <section className='cards__secondSection'>
           <Stats props={props} />
         </section>
         <section className='cards__thirdSection'>
-          <Pledges props={props} modalRef={modalRef} selectPledgeRef={selectPledgeRef} successPledgeRef={successPledgeRef} />
+          <Pledges props={props} />
         </section>
       </main>
-      <Modal props={props} modalRef={modalRef} radioRef={radioRef} selectPledgeRef={selectPledgeRef} successPledgeRef={successPledgeRef} />
+      <Modal props={props} />
     </>
   )
 }
