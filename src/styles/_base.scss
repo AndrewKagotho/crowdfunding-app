@@ -38,6 +38,12 @@ p, span {
 
 p { margin-bottom: 20px; }
 
+input, button {
+  font-family: 'Commissioner', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+}
+
 .description {
   width: 100%;
   font-weight: $bold-x1;
@@ -59,9 +65,7 @@ p { margin-bottom: 20px; }
   padding: 25px 25px 0;
   // border: 2px solid blue;
 
-  & > * {
-    // border: 1px solid orange;
-  }
+  & > * { border: 1px solid orange; }
 }
 
 @mixin h-center-content {
@@ -80,7 +84,7 @@ p { margin-bottom: 20px; }
   position: relative;
   top: 50%;
   left: 50%;
-  translate: -50% -50%;
+  transform: translate(-50% -50%);
 }
 
 main {

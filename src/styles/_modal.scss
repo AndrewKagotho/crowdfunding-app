@@ -6,22 +6,22 @@
   overflow-y: auto;
   position: fixed;
   top: 0;
-
-  h2 {
-    display: inline-block;
-    margin: 0px 0 15px;
-  }
-
-  .description {
-    text-align: left;
-    margin-bottom: 15px;
-  }
 }
 
 .modal__card {
   width: 40%;
   margin: 100px 0;
   @include h-center-content;
+
+  h2 {
+    display: inline-block;
+    margin-bottom: 15px;
+  }
+
+  .description {
+    text-align: left;
+    margin-bottom: 15px;
+  }
 
   svg {
     float: right;
@@ -46,19 +46,81 @@
   }
 }
 
+.modal__card__main {
+  padding: 25px;
+  // & > * { border: 1px solid blue; }
+  
+  p {
+    margin-bottom: 0;
+    margin-left: 45px;
+  }
+}
+
 .modal__card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & > div {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    & > * { cursor: pointer; }
+
+    &:hover {
+      span { border: 1px solid $theme; }
+      label { color: $theme;  }
+    }
+  }
+
+  .radio {
+    display: inline;
+    transform: translateY(5%);
+
+    input {
+      display: none;
+      appearance: none;
+    }
+  
+    span {
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      border-radius: 50%;
+      border: 1px solid $mid-grey;
+      position: relative;
+    }
+    
+    span:after {
+      content: '';
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background-color: $theme;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+    }
+    
+    input:checked ~ span:after {
+      width: 50%;
+      height: 50%;
+    }
+  }
   
   label {
     font-size: $small-font;
     font-weight: $bold-x2;
   }
 
-  span:nth-child(2) {
+  & > span:nth-child(2) {
     @include green_bold_text;
-    padding-left: 15px;
+    margin-left: 25px;
   }
 
-  span:nth-child(3) { float: right; }
+  & > span:last-child { margin-left: auto; }
 }
 
 .modal__card__expand {
@@ -69,8 +131,11 @@
   border-top: 1px solid $light-grey;
 
   div {
+    width: 15%;
     height: 40px;
-    display: table;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0 10px 0 auto;
     padding: 0 15px;
     border-radius: 20px;
@@ -78,60 +143,19 @@
 
     &:hover { border: 1px solid $theme; }
 
-    span {
-      display: table-cell;
-      vertical-align: middle;
-      // border: 1px solid red;
-    }
+    // & > * { border: 1px solid red !important; }
 
     input {
-      max-width: 35px;
-      height: 100%;
+      width: 30px;
+      height: 50%;
       color: $grey-font;
       line-height: 1.5;
       border: none;
+      border-right: 1px solid $theme;
       background-color: transparent;
     }
 
     input:focus { outline: none; }
-  }
-}
-
-.radio {
-
-  input {
-    display: none;
-    appearance: none;
-  }
-
-  span {
-    width: 18px;
-    height: 18px;
-    display: inline-block;
-    border-radius: 50%;
-    border: 1px solid $mid-grey;
-    @include v-center-content;
-  }
-  
-  span:hover {
-    background-color: $theme-hover;
-  }
-  
-  span:after {
-    content: '';
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background-color: $theme;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  input:checked ~ span:after {
-    width: 50%;
-    height: 50%;
   }
 }
 

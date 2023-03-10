@@ -41,6 +41,12 @@ p {
   margin-bottom: 20px;
 }
 
+input, button {
+  font-family: "Commissioner", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+}
+
 .description {
   width: 100%;
   font-weight: 500;
@@ -61,6 +67,10 @@ p {
   grid-template-rows: repeat(2, auto);
   padding: 25px 25px 0;
 }
+.grid > * {
+  border: 1px solid orange;
+}
+
 main {
   position: relative;
   left: 50%;
@@ -178,9 +188,7 @@ button:hover {
   margin-top: 25px;
 }
 .cards__secondSection progress[value] {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  appearance: none;
 }
 .cards__secondSection progress[value]::-webkit-progress-bar {
   border-radius: 5px;
@@ -225,14 +233,6 @@ button:hover {
   position: fixed;
   top: 0;
 }
-.modal h2 {
-  display: inline-block;
-  margin: 0px 0 15px;
-}
-.modal .description {
-  text-align: left;
-  margin-bottom: 15px;
-}
 
 .modal__card {
   width: 40%;
@@ -240,6 +240,14 @@ button:hover {
   position: relative;
   left: 50%;
   translate: -50% 0;
+}
+.modal__card h2 {
+  display: inline-block;
+  margin-bottom: 15px;
+}
+.modal__card .description {
+  text-align: left;
+  margin-bottom: 15px;
 }
 .modal__card svg {
   float: right;
@@ -263,17 +271,75 @@ button:hover {
   scale: 1.2;
 }
 
+.modal__card__main {
+  padding: 25px;
+}
+.modal__card__main p {
+  margin-bottom: 0;
+  margin-left: 45px;
+}
+
+.modal__card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal__card__header > div {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+.modal__card__header > div > * {
+  cursor: pointer;
+}
+.modal__card__header > div:hover span {
+  border: 1px solid hsl(176deg, 50%, 47%);
+}
+.modal__card__header > div:hover label {
+  color: hsl(176deg, 50%, 47%);
+}
+.modal__card__header .radio {
+  display: inline;
+  transform: translateY(5%);
+}
+.modal__card__header .radio input {
+  display: none;
+  appearance: none;
+}
+.modal__card__header .radio span {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  border-radius: 50%;
+  border: 1px solid hsla(0deg, 0%, 48%, 0.2);
+  position: relative;
+}
+.modal__card__header .radio span:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background-color: hsl(176deg, 50%, 47%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+.modal__card__header .radio input:checked ~ span:after {
+  width: 50%;
+  height: 50%;
+}
 .modal__card__header label {
   font-size: 0.8rem;
   font-weight: 700;
 }
-.modal__card__header span:nth-child(2) {
+.modal__card__header > span:nth-child(2) {
   font-weight: 700;
   color: hsl(176deg, 50%, 47%);
-  padding-left: 15px;
+  margin-left: 25px;
 }
-.modal__card__header span:nth-child(3) {
-  float: right;
+.modal__card__header > span:last-child {
+  margin-left: auto;
 }
 
 .modal__card__expand {
@@ -284,8 +350,11 @@ button:hover {
   border-top: 1px solid hsla(0deg, 0%, 48%, 0.1);
 }
 .modal__card__expand div {
+  width: 15%;
   height: 40px;
-  display: table;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0 10px 0 auto;
   padding: 0 15px;
   border-radius: 20px;
@@ -294,55 +363,17 @@ button:hover {
 .modal__card__expand div:hover {
   border: 1px solid hsl(176deg, 50%, 47%);
 }
-.modal__card__expand div span {
-  display: table-cell;
-  vertical-align: middle;
-}
 .modal__card__expand div input {
-  max-width: 35px;
-  height: 100%;
+  width: 30px;
+  height: 50%;
   color: #777;
   line-height: 1.5;
   border: none;
+  border-right: 1px solid hsl(176deg, 50%, 47%);
   background-color: transparent;
 }
 .modal__card__expand div input:focus {
   outline: none;
-}
-
-.radio input {
-  display: none;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-}
-.radio span {
-  width: 18px;
-  height: 18px;
-  display: inline-block;
-  border-radius: 50%;
-  border: 1px solid hsla(0deg, 0%, 48%, 0.2);
-  position: relative;
-  top: 50%;
-  translate: 0 -50%;
-}
-.radio span:hover {
-  background-color: hsl(176deg, 50%, 40%);
-}
-.radio span:after {
-  content: "";
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background-color: hsl(176deg, 50%, 47%);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.radio input:checked ~ span:after {
-  width: 50%;
-  height: 50%;
 }
 
 .modal__completed {
@@ -351,7 +382,7 @@ button:hover {
   position: relative;
   top: 50%;
   left: 50%;
-  translate: -50% -50%;
+  transform: translate(-50% -50%);
   position: relative;
 }
 .modal__completed svg {
@@ -517,4 +548,6 @@ button:hover {
   .modal__card__expand div input:focus {
     outline: none;
   }
-}/*# sourceMappingURL=main.css.map */
+}
+
+/*# sourceMappingURL=main.css.map */

@@ -74,21 +74,30 @@ const Modal = ({props}) => {
     e.preventDefault()
   }
 
-  const pledges = props.pledgeName.map((item, index) =>
+  const pledges = props.pledgeName.map((item, index) => {
+    let tag, rem
+
+    if(index !== 0) {
+      tag = ( <span>Pledge ${props.minAmount[index]} or more</span> )
+      rem = ( <span><b>{props.total[index]}</b> left</span> )
+    }
+
+  return (
     <li key={index} ref={(item) => pledgeCardRef.current[index] = item} onClick={() =>
       setFormData({ ...formData, pledgeID: props.pledgeID[index], total: props.total[index] })
     }>
-      <div className='grid' onClick={() => setPledge({ ...pledge, input: index })}>
-        <div className='radio'>
-          <input type='radio' id='bamboo' name='pledge' ref={(item) => radioRef.current[index] = item}/>
-          <span></span>
-        </div>
+      <div className='modal__card__main' onClick={() => setPledge({ ...pledge, input: index })}>
         <div className='modal__card__header'>
-          <label htmlFor='bamboo' >{item}</label>
-          <span>Pledge ${props.minAmount[index]} or more</span>
-          <span><b>{props.total[index]}</b> left</span>
+          <div>
+            <div className='radio'>
+              <input type='radio' id={`pledge${index}`} name='pledge' ref={(item) => radioRef.current[index] = item}/>
+              <span></span>
+            </div>
+            <label htmlFor={`pledge${index}`}>{item}</label>
+          </div>
+          {tag}
+          {rem}
         </div>
-        <div></div>
         <p>{props.description[index]}</p>
       </div>
       <div className='modal__card__expand' ref={(item) => expandCardRef.current[index] = item}>
@@ -100,6 +109,7 @@ const Modal = ({props}) => {
         <button type='submit'>Continue</button>
       </div>
     </li>
+  )}
   )
 
   return (

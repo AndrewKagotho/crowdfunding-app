@@ -9,6 +9,7 @@ let totalArray = []
 export const fetchProjectDetails = (props) => {
   axios.get(getProjectDetails)
   .then((response) => {
+    console.log(response)
     props.addProjectDetails(
       response.data[0][0].target,
       response.data[0][0].days,
