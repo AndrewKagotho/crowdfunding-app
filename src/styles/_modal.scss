@@ -1,8 +1,10 @@
 .modal {
-  display: none;
+  visibility: hidden;
+  opacity: 0;
   width: 100vw;
   height: 100vh;
   background-color: rgb(0, 0, 0, .5);
+  transition: visibility $animation, opacity $animation;
   overflow-y: auto;
   position: fixed;
   top: 0;
@@ -25,30 +27,24 @@
 
   svg {
     float: right;
-    path:hover { opacity: .6; }
+    path {
+      transition: opacity $animation;
+      &:hover { opacity: .6; }
+    }
   }
 
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+  li { @include card_border; }
 
-    li {
-      @include card_border;
-    }
-
-    b {
-      display: inline-block;
-      padding-right: 3px;
-      color: $dark;
-      scale: 1.2;
-    }
+  b {
+    display: inline-block;
+    padding-right: 3px;
+    color: $dark;
+    scale: 1.2;
   }
 }
 
 .modal__card__main {
   padding: 25px;
-  // & > * { border: 1px solid blue; }
   
   p {
     margin-bottom: 0;
@@ -70,7 +66,7 @@
 
     &:hover {
       span { border: 1px solid $theme; }
-      label { color: $theme;  }
+      label { color: $theme; }
     }
   }
 
@@ -89,21 +85,23 @@
       display: inline-block;
       border-radius: 50%;
       border: 1px solid $mid-grey;
+      transition: border $animation;
       position: relative;
     }
-    
+
     span:after {
       content: '';
       width: 0;
       height: 0;
       border-radius: 50%;
       background-color: $theme;
+      transition: width $animation, height $animation;
       position: absolute;
       top: 50%;
       left: 50%;
       translate: -50% -50%;
     }
-    
+  
     input:checked ~ span:after {
       width: 50%;
       height: 50%;
@@ -113,6 +111,7 @@
   label {
     font-size: $small-font;
     font-weight: $bold-x2;
+    transition: color $animation;
   }
 
   & > span:nth-child(2) {
@@ -124,14 +123,18 @@
 }
 
 .modal__card__expand {
-  display: none;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 25px;
+  height: 0;
+  transition: height $animation;
   border-top: 1px solid $light-grey;
+}
+
+.modal__card__expand__content {
+  display: none;
+  margin: 20px 25px;
+  align-items: center;
 
   div {
-    width: 15%;
+    width: 90px;
     height: 40px;
     display: flex;
     justify-content: center;
@@ -140,30 +143,42 @@
     padding: 0 15px;
     border-radius: 20px;
     border: 1px solid $light-grey;
+    transition: border $animation;
 
     &:hover { border: 1px solid $theme; }
-
-    // & > * { border: 1px solid red !important; }
+    span { font-weight: 700; }
 
     input {
-      width: 30px;
+      width: 40px;
       height: 50%;
       color: $grey-font;
-      line-height: 1.5;
+      text-align: right;
+      padding-right: 7px;
+      color: $dark;
       border: none;
-      border-right: 1px solid $theme;
+      border-right: 1px solid $mid-grey;
       background-color: transparent;
-    }
+      transition: border-right $animation;
 
-    input:focus { outline: none; }
+      &:focus {
+        outline: none;
+        border-right: 1px solid $theme;
+      }
+    }
+  }
+
+  button {      
+    width: 90px;
+    padding: 0;
   }
 }
 
 .modal__completed {
   display: none;
+  // visibility: hidden;
+  // opacity: 0;
   width: 300px;
   @include center-content;
-  position: relative;
 
   svg {
     @include h-center-content;

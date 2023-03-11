@@ -21,11 +21,20 @@ const Modal = ({props}) => {
   const successPledgeRef = React.useRef()
   const radioRef = React.useRef([])
   const expandCardRef = React.useRef([])
+  const expandContentRef = React.useRef([])
   const pledgeCardRef = React.useRef([])
 
+  let showElement = ref => {
+    ref.current.style.visibility = 'visible'
+    ref.current.style.opacity = '1'
+  }
+
   React.useEffect(() => {
-    if(modal.show) modalRef.current.style.display = 'block'
-    else modalRef.current.style.display = 'none'
+    if(modal.show) showElement(modalRef)
+    else {
+      modalRef.current.style.visibility = 'hidden'
+      modalRef.current.style.opacity = '0'
+    }
 
     if(pledge.showAll) {
       selectPledgeRef.current.style.display = 'block'
@@ -48,10 +57,14 @@ const Modal = ({props}) => {
     pledgeHistory[0] = pledgeHistory[1]
     pledgeHistory[1] = num
 
+    expandCardRef.current[pledgeHistory[0]].style.height = '0'
+    expandContentRef.current[pledgeHistory[0]].style.display = 'none'
+    expandCardRef.current[pledgeHistory[0]].style.borderTopWidth = '0px'
     pledgeCardRef.current[pledgeHistory[0]].style.boxShadow = 'none'
-    expandCardRef.current[pledgeHistory[0]].style.display = 'none'
+    expandCardRef.current[pledgeHistory[1]].style.height = '80px'
+    expandContentRef.current[pledgeHistory[1]].style.display = 'flex'
+    expandCardRef.current[pledgeHistory[1]].style.borderTopWidth = '1px'
     pledgeCardRef.current[pledgeHistory[1]].style.boxShadow = '0 0 3px 1px hsl(176, 50%, 47%)'
-    expandCardRef.current[pledgeHistory[1]].style.display = 'flex'
   }
 
   const hideModal = () => {
@@ -60,9 +73,9 @@ const Modal = ({props}) => {
     if(success.show) setSuccess({ show: false })
   }
   
-  const handleChange = (e) => setFormData({ ...formData, amount: e.target.value })
+  const handleChange = e => setFormData({ ...formData, amount: e.target.value })
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     axios.post(submitPledge, formData)
     .then((response) => {
         if(response) {
@@ -75,18 +88,23 @@ const Modal = ({props}) => {
   }
 
   const pledges = props.pledgeName.map((item, index) => {
-    let tag, rem
+    let tag, left, classList, action = () => setPledge({ ...pledge, input: index })
+
+    if(parseInt(props.total[index]) === 0) {
+      classList = 'outOfStock'
+      action = () => setPledge({ ...pledge, input: -1 })
+    }
 
     if(index !== 0) {
       tag = ( <span>Pledge ${props.minAmount[index]} or more</span> )
-      rem = ( <span><b>{props.total[index]}</b> left</span> )
+      left = ( <span><b>{props.total[index]}</b> left</span> )
     }
 
   return (
-    <li key={index} ref={(item) => pledgeCardRef.current[index] = item} onClick={() =>
+    <li className={classList} key={index} ref={(item) => pledgeCardRef.current[index] = item} onClick={() =>
       setFormData({ ...formData, pledgeID: props.pledgeID[index], total: props.total[index] })
     }>
-      <div className='modal__card__main' onClick={() => setPledge({ ...pledge, input: index })}>
+      <div className='modal__card__main' onClick={ action }>
         <div className='modal__card__header'>
           <div>
             <div className='radio'>
@@ -96,17 +114,19 @@ const Modal = ({props}) => {
             <label htmlFor={`pledge${index}`}>{item}</label>
           </div>
           {tag}
-          {rem}
+          {left}
         </div>
         <p>{props.description[index]}</p>
       </div>
       <div className='modal__card__expand' ref={(item) => expandCardRef.current[index] = item}>
-        <span>Enter your pledge</span>
-        <div>
-          <span>$</span>
-          <input type='text' name='amount' defaultValue={props.minAmount[index]} onChange={ handleChange }/>
+        <div className='modal__card__expand__content' ref={(item) => expandContentRef.current[index] = item}>
+          <span>Enter your pledge</span>
+          <div>
+            <span>$</span>
+            <input type='text' name='amount' defaultValue={props.minAmount[index]} onChange={ handleChange }/>
+          </div>
+          <button type='submit'>Continue</button>
         </div>
-        <button type='submit'>Continue</button>
       </div>
     </li>
   )}
