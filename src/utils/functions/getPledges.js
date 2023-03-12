@@ -3,7 +3,7 @@ import { url } from './getProjectDetails'
 
 let getPledges = `${url}/api/pledges`
 
-export const fetchPledges = (props) => {
+export const fetchPledges = props => {
   props.resetPledgeData()
   axios.get(getPledges)
   .then((response) => {

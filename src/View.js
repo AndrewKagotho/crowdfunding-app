@@ -12,8 +12,12 @@ import { fetchPledges } from './utils/functions/getPledges'
 const View = props => {
 
   React.useEffect(() => {
-    fetchProjectDetails(props)
+    
     fetchPledges(props)
+
+    const interval = setInterval(() => fetchProjectDetails(props), 5000)
+
+    return () => clearInterval(interval)
 
     // eslint-disable-next-line
   }, [])

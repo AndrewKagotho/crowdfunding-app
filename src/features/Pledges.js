@@ -6,8 +6,6 @@ const Pledges = ({props}) => {
   const { pledgeValue, modalValue } = React.useContext(AppContext)
   const { setPledge } = pledgeValue
   const { setModal } = modalValue
-
-  React.useEffect(() => { document.body.style.overflow = 'hidden' }, [])
   
   const pledges = props.pledgeName.map((item, index) => {
     let classList, action = () => { setModal({ show: true }); setPledge({ showAll: true, input: index }) }

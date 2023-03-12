@@ -67,16 +67,6 @@ input, button {
   gap: 20px;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: 30px auto;
-  grid-template-rows: repeat(2, auto);
-  padding: 25px 25px 0;
-}
-.grid > * {
-  border: 1px solid orange;
-}
-
 main {
   position: relative;
   left: 50%;
@@ -178,10 +168,19 @@ button:hover {
 .cards__secondSection div span {
   display: block;
 }
+@keyframes textAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .cards__secondSection div span:nth-child(1) {
   font-size: 1.7rem;
   font-weight: 700;
   color: #000;
+  animation: textAnimation 5s ease-out infinite;
 }
 .cards__secondSection div span:nth-child(2) {
   font-size: 0.8rem;
@@ -262,7 +261,7 @@ button:hover {
 
 .modal__card {
   width: 40%;
-  margin: 100px 0;
+  margin-top: 100px;
   position: relative;
   left: 50%;
   translate: -50% 0;
@@ -417,6 +416,9 @@ button:hover {
 .modal__card__expand__content div input:focus {
   outline: none;
   border-right: 1px solid hsl(176deg, 50%, 47%);
+}
+.modal__card__expand__content div input::-webkit-outer-spin-button, .modal__card__expand__content div input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }
 .modal__card__expand__content button {
   width: 90px;

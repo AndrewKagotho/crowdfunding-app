@@ -1,15 +1,14 @@
 import axios from 'axios'
 
-// export const url = "https://crowdfunding-app-ak.herokuapp.com"
-export const url = "http://localhost:3001"
+export const url = 'https://crowdfunding-app-ak.herokuapp.com'
+// export const url = 'http://localhost:3001'
 
 let getProjectDetails = `${url}/api`
 let totalArray = []
 
-export const fetchProjectDetails = (props) => {
+export const fetchProjectDetails = props => {
   axios.get(getProjectDetails)
   .then((response) => {
-    console.log(response)
     props.addProjectDetails(
       response.data[0][0].target,
       response.data[0][0].days,
@@ -21,5 +20,5 @@ export const fetchProjectDetails = (props) => {
       totalArray[i] = response.data[3][i].total
 
     props.updatePledgeTotals(totalArray)
-  },((err) => console.log(err)))
+  })
 }
