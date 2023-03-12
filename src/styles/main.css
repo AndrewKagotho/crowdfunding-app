@@ -232,6 +232,15 @@ button:hover {
 .outOfStock {
   filter: grayscale(100%) opacity(0.5);
 }
+.outOfStock .modal__card__header * {
+  cursor: default;
+}
+.outOfStock .modal__card__header:hover .radio span {
+  border: 1px solid hsla(0deg, 0%, 48%, 0.2);
+}
+.outOfStock .modal__card__header:hover label {
+  color: #000;
+}
 .outOfStock button {
   cursor: default;
 }
@@ -268,6 +277,7 @@ button:hover {
 }
 .modal__card svg {
   float: right;
+  cursor: pointer;
 }
 .modal__card svg path {
   transition: opacity 0.2s ease-out;

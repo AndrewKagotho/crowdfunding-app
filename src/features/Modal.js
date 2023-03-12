@@ -76,14 +76,10 @@ const Modal = ({props}) => {
   const handleChange = e => setFormData({ ...formData, amount: e.target.value })
 
   const handleSubmit = e => {
-    axios.post(submitPledge, formData)
-    .then((response) => {
-        if(response) {
-          setSuccess({ show: true })
-          fetchProjectDetails(props)
-        }
-      }
-    )
+    if(axios.post(submitPledge, formData)) {
+      setSuccess({ show: true })
+      fetchProjectDetails(props)
+    }
     e.preventDefault()
   }
 
@@ -91,6 +87,7 @@ const Modal = ({props}) => {
     let tag, left, classList, action = () => setPledge({ ...pledge, input: index })
 
     if(parseInt(props.total[index]) === 0) {
+      radioRef.current[index].disabled = 'true'
       classList = 'outOfStock'
       action = () => setPledge({ ...pledge, input: -1 })
     }

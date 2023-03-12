@@ -21,5 +21,5 @@ export const fetchProjectDetails = (props) => {
       totalArray[i] = response.data[3][i].total
 
     props.updatePledgeTotals(totalArray)
-  })
+  },((err) => console.log(err)))
 }

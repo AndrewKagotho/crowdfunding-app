@@ -27,6 +27,7 @@
 
   svg {
     float: right;
+    cursor: pointer;
     path {
       transition: opacity $animation;
       &:hover { opacity: .6; }
@@ -175,8 +176,6 @@
 
 .modal__completed {
   display: none;
-  // visibility: hidden;
-  // opacity: 0;
   width: 300px;
   @include center-content;
 

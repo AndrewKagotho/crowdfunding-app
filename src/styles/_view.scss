@@ -100,6 +100,16 @@
 
 .outOfStock {
   filter: grayscale(100%) opacity(.5);
+
+  .modal__card__header {
+    * { cursor: default; }
+
+    &:hover {
+      .radio span { border: 1px solid $mid-grey; }
+      label { color: $dark; }
+    }
+  }
+
   button {
     cursor: default;
     &:hover { background-color: $theme; }
