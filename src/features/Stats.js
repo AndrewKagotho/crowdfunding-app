@@ -1,6 +1,3 @@
-// import React from 'react'
-// import { AppContext } from '../App'
-
 const Stats = ({props}) => {
 
   let amounted = props.amounted

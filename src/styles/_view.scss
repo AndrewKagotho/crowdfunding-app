@@ -1,3 +1,8 @@
+.cards {
+  width: 40%;
+  & > section { @include card; }
+}
+
 .cards__firstSection {
   & > svg {
     position: absolute;
@@ -65,18 +70,20 @@
     height: 8px;
     grid-column: 1/4;
     margin-top: 25px;
-  }
 
-  progress[value] { appearance: none; }
+    &[value] {
+      appearance: none;
 
-  progress[value]::-webkit-progress-bar {
-    border-radius: 5px;
-    background-color: $light-grey;
-  }
-
-  progress[value]::-webkit-progress-value {
-    border-radius: 5px;
-    background-color: $theme;
+      &::-webkit-progress-bar {
+        border-radius: 5px;
+        background-color: $light-grey;
+      }
+    
+      &::-webkit-progress-value {
+        border-radius: 5px;
+        background-color: $theme;
+      }
+    }
   }
 }
 
@@ -97,6 +104,7 @@
       display: inline-block;
       color: $dark;
       translate: 0 2px;
+      padding-right: 3px;
     }
 
     button { float: right; }

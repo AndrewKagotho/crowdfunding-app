@@ -12,7 +12,7 @@
 
 .modal__card {
   width: 40%;
-  margin-top: 100px;
+  margin: 100px 0;
   @include h-center-content;
 
   h2 {
@@ -157,16 +157,10 @@
       padding-right: 7px;
       color: $dark;
       border: none;
-      border-right: 1px solid $mid-grey;
-      background-color: transparent;
-      transition: border-right $animation;
 
-      &:focus {
-        outline: none;
-        border-right: 1px solid $theme;
-      }
+      &:focus { outline: none; }
 
-      &::-webkit-outer-spin-button, &::-webkit-inner-spin-button { -webkit-appearance: none; }
+      &::-webkit-inner-spin-button { -webkit-appearance: none; }
     }
   }
 
@@ -178,7 +172,7 @@
 
 .modal__completed {
   display: none;
-  width: 300px;
+  width: 23%;
   @include center-content;
 
   svg {

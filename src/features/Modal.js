@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { AppContext } from '../App'
 import { fetchProjectDetails } from '../utils/functions/getProjectDetails'
-import { url } from '../utils/functions/getProjectDetails'
+import { url } from '../utils/config'
 
 let submitPledge = `${url}/api`
 let pledgeHistory = [0,0]
@@ -85,8 +85,7 @@ const Modal = ({props}) => {
     let tag, left, classList, action = () => setPledge({ ...pledge, input: index })
 
     if(parseInt(props.total[index]) === 0) {
-      if(radioRef.current.length !== 0)
-        radioRef.current[index].disabled = 'true'
+      if(radioRef.current.length !== 0) radioRef.current[index].disabled = 'true'
       classList = 'outOfStock'
       action = () => setPledge({ ...pledge, input: -1 })
     }
@@ -96,37 +95,37 @@ const Modal = ({props}) => {
       left = ( <span><b>{props.total[index]}</b> left</span> )
     }
 
-  return (
-    <li className={classList} key={index} ref={(item) => pledgeCardRef.current[index] = item} onClick={() =>
-      setForm({ ...form, pledgeID: props.pledgeID[index], total: props.total[index] })
-    }>
-      <div className='modal__card__main' onClick={ action }>
-        <div className='modal__card__header'>
-          <div>
-            <div className='radio'>
-              <input type='radio' id={`pledge${index}`} name='pledge' ref={(item) => radioRef.current[index] = item}/>
-              <span></span>
+    return (
+      <li className={classList} key={index} ref={(item) => pledgeCardRef.current[index] = item} onClick={() =>
+        setForm({ ...form, pledgeID: props.pledgeID[index], total: props.total[index] })
+      }>
+        <div className='modal__card__main' onClick={ action }>
+          <div className='modal__card__header'>
+            <div>
+              <div className='radio'>
+                <input type='radio' id={`pledge${index}`} name='pledge' ref={(item) => radioRef.current[index] = item}/>
+                <span></span>
+              </div>
+              <label htmlFor={`pledge${index}`}>{item}</label>
             </div>
-            <label htmlFor={`pledge${index}`}>{item}</label>
+            {tag}
+            {left}
           </div>
-          {tag}
-          {left}
+          <p>{props.description[index]}</p>
         </div>
-        <p>{props.description[index]}</p>
-      </div>
-      <div className='modal__card__expand' ref={ item  => expandCardRef.current[index] = item }>
-        <div className='modal__card__expand__content' ref={ item => expandContentRef.current[index] = item }>
-          <span>Enter your pledge</span>
-          <div>
-            <span>$</span>
-            <input type='number' name='amount' defaultValue={props.minAmount[index]} min={props.minAmount[index]} onChange={ e => handleChange(e, index) }/>
+        <div className='modal__card__expand' ref={ item  => expandCardRef.current[index] = item }>
+          <div className='modal__card__expand__content' ref={ item => expandContentRef.current[index] = item }>
+            <span>Enter your pledge</span>
+            <div>
+              <span>$</span>
+              <input type='number' name='amount' defaultValue={props.minAmount[index]} min={props.minAmount[index]} onChange={ e => handleChange(e, index) }/>
+            </div>
+            <button type='submit'>Continue</button>
           </div>
-          <button type='submit'>Continue</button>
         </div>
-      </div>
-    </li>
-  )}
-  )
+      </li>
+    )
+  })
 
   return (
     <div className='modal cards' ref={modalRef}>

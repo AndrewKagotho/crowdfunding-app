@@ -50,6 +50,21 @@ input, button {
   font-weight: 600;
 }
 
+button {
+  height: 40px;
+  padding: 0 25px;
+  border: none;
+  border-radius: 50px;
+  background-color: $theme;
+  color: $neutral;
+  transition: background-color $animation;
+
+  &:hover {
+    background-color: $theme-hover;
+    cursor: pointer;
+  }
+}
+
 .description {
   width: 100%;
   font-weight: $bold-x1;

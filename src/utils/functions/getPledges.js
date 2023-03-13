@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { url } from './getProjectDetails'
+import { url } from '../config'
 
 let getPledges = `${url}/api/pledges`
 
