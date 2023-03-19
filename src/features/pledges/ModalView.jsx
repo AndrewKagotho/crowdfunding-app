@@ -1,13 +1,15 @@
 import React from 'react'
 import axios from 'axios'
-import { AppContext } from '../App'
-import { fetchProjectDetails } from '../utils/functions/getProjectDetails'
-import { url } from '../utils/config'
+import { useSelector } from 'react-redux'
+import { AppContext } from '../../App'
+import { url } from '../../utils/config'
 
 let submitPledge = `${url}/api`
 let pledgeHistory = [0,0]
 
-const Modal = ({props}) => {
+const ModalView = () => {
+
+  const data = useSelector(state => state.pledges)
 
   const { pledgeValue, modalValue, successValue, formData } = React.useContext(AppContext)
   const { pledge, setPledge } = pledgeValue
@@ -24,7 +26,7 @@ const Modal = ({props}) => {
   const pledgeCardRef = React.useRef([])
 
   React.useEffect(() => {
-    if(modal.show) {      
+    if(modal) {      
       modalRef.current.style.visibility = 'visible'
       modalRef.current.style.opacity = '1'
     }
@@ -49,7 +51,7 @@ const Modal = ({props}) => {
   }, [pledge, success])
 
   const expandPledge = (num) => {
-    setForm({ ...form, amount: props.minAmount[num] })
+    setForm({ ...form, amount: data.pledges[num]['minimum amount'] })
     radioRef.current[num].checked = 'true'
 
     pledgeHistory[0] = pledgeHistory[1]
@@ -66,7 +68,7 @@ const Modal = ({props}) => {
   }
 
   const hideModal = () => {
-    setModal({ show: false })
+    setModal(false)
     setPledge({ ...pledge, showAll: false })
     if(success.show) setSuccess({ show: false })
   }
@@ -76,28 +78,28 @@ const Modal = ({props}) => {
   const handleSubmit = e => {    
     if(axios.post(submitPledge, form)) {
       setSuccess({ show: true })
-      fetchProjectDetails(props)
+      // fetchProjectDetails(data.pledges)
     }
     e.preventDefault()
   }
 
-  const pledges = props.pledgeName.map((item, index) => {
+  const pledgeItem = data.pledges.map((pledgeItem, index) => {
     let tag, left, classList, action = () => setPledge({ ...pledge, input: index })
 
-    if(parseInt(props.total[index]) === 0) {
+    if(pledgeItem.total === 0) {
       if(radioRef.current.length !== 0) radioRef.current[index].disabled = 'true'
       classList = 'outOfStock'
       action = () => setPledge({ ...pledge, input: -1 })
     }
 
     if(index !== 0) {
-      tag = ( <span>Pledge ${props.minAmount[index]} or more</span> )
-      left = ( <span><b>{props.total[index]}</b> left</span> )
+      tag = ( <span>Pledge ${pledgeItem['minimum amount']} or more</span> )
+      left = ( <span><b>{pledgeItem.total}</b> left</span> )
     }
 
     return (
       <li className={classList} key={index} ref={(item) => pledgeCardRef.current[index] = item} onClick={() =>
-        setForm({ ...form, pledgeID: props.pledgeID[index], total: props.total[index] })
+        setForm({ ...form, pledgeID: pledgeItem.pledgeID, total: pledgeItem.total })
       }>
         <div className='modal__card__main' onClick={ action }>
           <div className='modal__card__header'>
@@ -106,19 +108,19 @@ const Modal = ({props}) => {
                 <input type='radio' id={`pledge${index}`} name='pledge' ref={(item) => radioRef.current[index] = item}/>
                 <span></span>
               </div>
-              <label htmlFor={`pledge${index}`}>{item}</label>
+              <label htmlFor={`pledge${index}`}>{pledgeItem.name}</label>
             </div>
             {tag}
             {left}
           </div>
-          <p>{props.description[index]}</p>
+          <p>{pledgeItem.description}</p>
         </div>
         <div className='modal__card__expand' ref={ item  => expandCardRef.current[index] = item }>
           <div className='modal__card__expand__content' ref={ item => expandContentRef.current[index] = item }>
             <span>Enter your pledge</span>
             <div>
               <span>$</span>
-              <input type='number' name='amount' defaultValue={props.minAmount[index]} min={props.minAmount[index]} onChange={ e => handleChange(e, index) }/>
+              <input type='number' name='amount' defaultValue={pledgeItem['minimum amount']} min={pledgeItem['minimum amount']} onChange={ handleChange }/>
             </div>
             <button type='submit'>Continue</button>
           </div>
@@ -135,7 +137,7 @@ const Modal = ({props}) => {
         <span className='description'>Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?</span>
         <form onSubmit={ handleSubmit }>
           <ul className='flex'>
-            {pledges}
+            {pledgeItem}
           </ul>
         </form>
       </section>
@@ -149,4 +151,4 @@ const Modal = ({props}) => {
   )
 }
 
-export default Modal
+export default ModalView
